@@ -43,6 +43,7 @@ DISALLOWED_FILE_PATTERNS = [
 ALLOWED_QUANTIZATION_PATTERNS = re.compile(
     r'^(.+?)(?:_(' + "|".join(ALLOWED_QUANTIZATIONS) + r'))?\.onnx$'
 )
+ALLOWED_REPO_PATTERN = re.compile(r"tiny-random-\w+(?:For\w+|Model)");
 
 def get_operators(model: onnx.ModelProto) -> Set[str]:
     """
@@ -139,6 +140,7 @@ def collect_model_ops(
     logging.info("Found %d models.", len(onnx_models))
     unique_models: Dict[str, Any] = {}
     model_types: Dict[str, str] = {}
+    model_architectures: Dict[str, str] = {}
 
     for model in onnx_models:
         repo_id = model.modelId
@@ -152,10 +154,14 @@ def collect_model_ops(
         if repo_id in BANNED_REPOS:
             logging.info("Skipping banned model: %s", repo_id)
             continue
+        if not ALLOWED_REPO_PATTERN.search(repo_id):
+            logging.info("Skipping disallowed model: %s", repo_id)
+            continue
 
         unique_models[repo_id] = model
         cfg = getattr(model, "config", {}) or {}
         model_types[repo_id] = cfg.get("model_type", "unknown")
+        model_architectures[repo_id] = cfg.get("architectures", [])
 
     # Limit unique models based on downloads
     unique_models = dict(
@@ -224,7 +230,7 @@ def collect_model_ops(
                 f.write(repo_id + "\n")
             processed_repos.add(repo_id)
 
-    architecture_ops: Dict[str, List[Tuple[str, str, List[str]]]] = {}
+    architecture_ops: Dict[str, List[Tuple[str, str, Set[str]]]] = {}
     for (m_type, model_id, q), ops_set in model_type_ops.items():
         if m_type not in architecture_ops:
             architecture_ops[m_type] = []
@@ -232,7 +238,7 @@ def collect_model_ops(
             # Avoid duplicating operations already covered
             if any(existing_ops == ops_set for _, _, existing_ops in architecture_ops[m_type]):
                 continue
-        architecture_ops[m_type].append((model_id, q, sorted(list(ops_set))))
+        architecture_ops[m_type].append((model_id, q, ops_set))
 
     # Generate JS files
     core_dir = Path(__file__).parent.parent / "packages/core/src"
@@ -242,7 +248,7 @@ def collect_model_ops(
     for m_type, model_list in architecture_ops.items():
         js_path = arch_dir / f"{m_type}.js"
         models_data = [
-            {"model_id": model_id, "dtype": quantization, "ops": ops}
+            {"model_id": model_id, "dtype": quantization, "architectures": model_architectures[model_id], "ops": sorted(list(ops))}
             for model_id, quantization, ops in model_list
         ]
         template = (
@@ -257,7 +263,7 @@ def collect_model_ops(
         fp.write("// NOTE: This file has been auto-generated. Do not edit directly.\n")
         for m_type in architecture_ops.keys():
             safe_m_type = m_type.replace('-', '_')
-            fp.write(f"export * as {safe_m_type} from './architectures/{m_type}.js';\n")
+            fp.write(f"export {{ default as {safe_m_type} }} from './architectures/{m_type}.js';\n")
 
 def main() -> None:
     """
@@ -274,7 +280,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--all_models", action="store_true",
-        help="Include models from the transformers.js library in addition to ONNX models."
+        help="Include models from the transformers.js library in addition to tiny-random models."
     )
     args = parser.parse_args()
 
