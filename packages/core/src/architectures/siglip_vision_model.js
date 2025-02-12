@@ -1,0 +1,40 @@
+// NOTE: This file has been auto-generated. Do not edit directly.
+
+export default {
+  model_type: "siglip_vision_model",
+  models: [
+    {
+      model_id: "onnx-internal-testing/tiny-random-SiglipVisionModel-ONNX",
+      dtype: "fp32",
+      ops: [
+        "Add",
+        "Cast",
+        "Concat",
+        "Constant",
+        "ConstantOfShape",
+        "Conv",
+        "Div",
+        "Expand",
+        "Gather",
+        "Gemm",
+        "Identity",
+        "MatMul",
+        "Mod",
+        "Mul",
+        "Pow",
+        "ReduceMean",
+        "Reshape",
+        "Shape",
+        "Slice",
+        "Softmax",
+        "Sqrt",
+        "Squeeze",
+        "Sub",
+        "Tanh",
+        "Tile",
+        "Transpose",
+        "Unsqueeze",
+      ],
+    },
+  ],
+};

@@ -1,0 +1,42 @@
+// NOTE: This file has been auto-generated. Do not edit directly.
+
+export default {
+  model_type: "siglip",
+  models: [
+    {
+      model_id: "onnx-internal-testing/tiny-random-SiglipModel-ONNX",
+      dtype: "fp32",
+      ops: [
+        "Add",
+        "Cast",
+        "Concat",
+        "Constant",
+        "ConstantOfShape",
+        "Conv",
+        "Div",
+        "Exp",
+        "Expand",
+        "Gather",
+        "Gemm",
+        "Identity",
+        "MatMul",
+        "Mod",
+        "Mul",
+        "Pow",
+        "ReduceL2",
+        "ReduceMean",
+        "Reshape",
+        "Shape",
+        "Slice",
+        "Softmax",
+        "Sqrt",
+        "Squeeze",
+        "Sub",
+        "Tanh",
+        "Tile",
+        "Transpose",
+        "Unsqueeze",
+      ],
+    },
+  ],
+};

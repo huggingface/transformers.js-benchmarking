@@ -1,0 +1,42 @@
+// NOTE: This file has been auto-generated. Do not edit directly.
+
+export default {
+  model_type: "jais",
+  models: [
+    {
+      model_id: "onnx-community/tiny-random-jais",
+      dtype: "fp32",
+      ops: [
+        "Abs",
+        "Add",
+        "Cast",
+        "Concat",
+        "Constant",
+        "ConstantOfShape",
+        "Div",
+        "Equal",
+        "Expand",
+        "Gather",
+        "Gemm",
+        "Identity",
+        "MatMul",
+        "Mul",
+        "Pow",
+        "Range",
+        "ReduceMean",
+        "Reshape",
+        "Shape",
+        "Sigmoid",
+        "Slice",
+        "Softmax",
+        "Split",
+        "Sqrt",
+        "Squeeze",
+        "Sub",
+        "Transpose",
+        "Unsqueeze",
+        "Where",
+      ],
+    },
+  ],
+};

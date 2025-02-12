@@ -1,0 +1,43 @@
+// NOTE: This file has been auto-generated. Do not edit directly.
+
+export default {
+  model_type: "gemma2",
+  models: [
+    {
+      model_id: "hf-internal-testing/tiny-random-Gemma2ForCausalLM",
+      dtype: "fp32",
+      ops: [
+        "Add",
+        "Cast",
+        "Concat",
+        "Constant",
+        "ConstantOfShape",
+        "Cos",
+        "Div",
+        "Equal",
+        "Expand",
+        "Gather",
+        "Greater",
+        "Identity",
+        "MatMul",
+        "Mul",
+        "Neg",
+        "Pow",
+        "Range",
+        "ReduceMean",
+        "Reshape",
+        "ScatterND",
+        "Shape",
+        "Sin",
+        "Slice",
+        "Softmax",
+        "Sqrt",
+        "Tanh",
+        "Transpose",
+        "Trilu",
+        "Unsqueeze",
+        "Where",
+      ],
+    },
+  ],
+};

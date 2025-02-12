@@ -1,0 +1,43 @@
+// NOTE: This file has been auto-generated. Do not edit directly.
+
+export default {
+  model_type: "donut-swin",
+  models: [
+    {
+      model_id: "onnx-internal-testing/tiny-random-DonutSwinModel-ONNX",
+      dtype: "fp32",
+      ops: [
+        "Add",
+        "Cast",
+        "Concat",
+        "Constant",
+        "ConstantOfShape",
+        "Conv",
+        "Div",
+        "Equal",
+        "Erf",
+        "Expand",
+        "Gather",
+        "Identity",
+        "MatMul",
+        "Mod",
+        "Mul",
+        "Not",
+        "Pad",
+        "Pow",
+        "Range",
+        "ReduceMean",
+        "Reshape",
+        "ScatterND",
+        "Shape",
+        "Slice",
+        "Softmax",
+        "Sqrt",
+        "Sub",
+        "Transpose",
+        "Unsqueeze",
+        "Where",
+      ],
+    },
+  ],
+};
