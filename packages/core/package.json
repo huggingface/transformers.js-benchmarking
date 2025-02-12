@@ -1,0 +1,10 @@
+{
+  "name": "@benchmarking/core",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.js",
+  "type": "module",
+  "dependencies": {
+    "@huggingface/transformers": "^3.3.3"
+  }
+}
