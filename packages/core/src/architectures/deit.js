@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-DeiTModel-ONNX",
       dtype: "fp32",
+      architectures: ["DeiTModel"],
       ops: [
         "Add",
         "Cast",
@@ -38,39 +39,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-DeiTForImageClassification-ONNX",
       dtype: "fp32",
-      ops: [
-        "Add",
-        "Cast",
-        "Concat",
-        "Constant",
-        "ConstantOfShape",
-        "Conv",
-        "Div",
-        "Equal",
-        "Erf",
-        "Expand",
-        "Gather",
-        "Gemm",
-        "Identity",
-        "MatMul",
-        "Mul",
-        "Pow",
-        "ReduceMean",
-        "Reshape",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-        "Where",
-      ],
-    },
-    {
-      model_id:
-        "onnx-internal-testing/tiny-random-DeiTForImageClassificationWithTeacher-ONNX",
-      dtype: "fp32",
+      architectures: ["DeiTForImageClassification"],
       ops: [
         "Add",
         "Cast",

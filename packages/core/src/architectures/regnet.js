@@ -7,6 +7,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-RegNetForImageClassification-ONNX",
       dtype: "fp32",
+      architectures: ["RegNetForImageClassification"],
       ops: [
         "Add",
         "Conv",
@@ -22,6 +23,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-RegNetModel-ONNX",
       dtype: "fp32",
+      architectures: ["RegNetModel"],
       ops: [
         "Add",
         "Conv",

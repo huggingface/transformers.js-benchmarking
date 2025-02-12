@@ -7,6 +7,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-SplinterForQuestionAnswering-ONNX",
       dtype: "fp32",
+      architectures: ["SplinterForQuestionAnswering"],
       ops: [
         "Add",
         "ArgMax",
@@ -41,32 +42,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-SplinterModel-ONNX",
       dtype: "fp32",
-      ops: [
-        "Add",
-        "Cast",
-        "Concat",
-        "Constant",
-        "Div",
-        "Erf",
-        "Gather",
-        "Identity",
-        "MatMul",
-        "Mul",
-        "Pow",
-        "ReduceMean",
-        "Reshape",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-      ],
-    },
-    {
-      model_id: "onnx-internal-testing/tiny-random-SplinterForPreTraining-ONNX",
-      dtype: "fp32",
+      architectures: ["SplinterModel"],
       ops: [
         "Add",
         "Cast",

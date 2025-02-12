@@ -6,6 +6,7 @@ export default {
     {
       model_id: "Xenova/tiny-random-Florence2ForConditionalGeneration",
       dtype: "fp32",
+      architectures: ["Florence2ForConditionalGeneration"],
       ops: [
         "Add",
         "Cast",

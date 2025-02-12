@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-SiglipVisionModel-ONNX",
       dtype: "fp32",
+      architectures: ["SiglipVisionModel"],
       ops: [
         "Add",
         "Cast",

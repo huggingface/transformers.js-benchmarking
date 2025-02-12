@@ -6,6 +6,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-OPTForCausalLM",
       dtype: "fp32",
+      architectures: ["OPTForCausalLM"],
       ops: [
         "Add",
         "Cast",
@@ -42,6 +43,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-OPTForCausalLM-ONNX",
       dtype: "fp32",
+      architectures: ["OPTForCausalLM"],
       ops: [
         "Add",
         "Cast",
@@ -77,6 +79,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-OPTForQuestionAnswering-ONNX",
       dtype: "fp32",
+      architectures: ["OPTForQuestionAnswering"],
       ops: [
         "Add",
         "Cast",
@@ -111,43 +114,10 @@ export default {
       ],
     },
     {
-      model_id: "onnx-internal-testing/tiny-random-OPTModel-ONNX",
-      dtype: "fp32",
-      ops: [
-        "Add",
-        "Cast",
-        "Concat",
-        "Constant",
-        "ConstantOfShape",
-        "Div",
-        "Equal",
-        "Expand",
-        "Gather",
-        "Gemm",
-        "Identity",
-        "Less",
-        "MatMul",
-        "Mul",
-        "Pow",
-        "Range",
-        "ReduceMean",
-        "Relu",
-        "Reshape",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Squeeze",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-        "Where",
-      ],
-    },
-    {
       model_id:
         "onnx-internal-testing/tiny-random-OPTForSequenceClassification-ONNX",
       dtype: "fp32",
+      architectures: ["OPTForSequenceClassification"],
       ops: [
         "Add",
         "ArgMax",

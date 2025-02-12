@@ -6,33 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-RemBertModel-ONNX",
       dtype: "fp32",
-      ops: [
-        "Add",
-        "Cast",
-        "Concat",
-        "Constant",
-        "Div",
-        "Erf",
-        "Gather",
-        "Identity",
-        "MatMul",
-        "Mul",
-        "Pow",
-        "ReduceMean",
-        "Reshape",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-      ],
-    },
-    {
-      model_id:
-        "onnx-internal-testing/tiny-random-RemBertForTokenClassification-ONNX",
-      dtype: "fp32",
+      architectures: ["RemBertModel"],
       ops: [
         "Add",
         "Cast",
@@ -60,6 +34,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-RemBertForSequenceClassification-ONNX",
       dtype: "fp32",
+      architectures: ["RemBertForSequenceClassification"],
       ops: [
         "Add",
         "Cast",
@@ -89,6 +64,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-RemBertForMultipleChoice-ONNX",
       dtype: "fp32",
+      architectures: ["RemBertForMultipleChoice"],
       ops: [
         "Add",
         "Cast",
@@ -116,35 +92,10 @@ export default {
       ],
     },
     {
-      model_id: "onnx-internal-testing/tiny-random-RemBertForMaskedLM-ONNX",
-      dtype: "fp32",
-      ops: [
-        "Add",
-        "Cast",
-        "Concat",
-        "Constant",
-        "Div",
-        "Erf",
-        "Gather",
-        "Identity",
-        "MatMul",
-        "Mul",
-        "Pow",
-        "ReduceMean",
-        "Reshape",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-      ],
-    },
-    {
       model_id:
         "onnx-internal-testing/tiny-random-RemBertForQuestionAnswering-ONNX",
       dtype: "fp32",
+      architectures: ["RemBertForQuestionAnswering"],
       ops: [
         "Add",
         "Cast",

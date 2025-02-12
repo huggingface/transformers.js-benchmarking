@@ -7,6 +7,7 @@ export default {
       model_id:
         "hf-internal-testing/tiny-random-VisionEncoderDecoderModel-vit-gpt2",
       dtype: "fp32",
+      architectures: ["VisionEncoderDecoderModel"],
       ops: [
         "Add",
         "Cast",
@@ -44,6 +45,7 @@ export default {
       model_id:
         "hf-internal-testing/tiny-random-VisionEncoderDecoderModel-donutswin-mbart",
       dtype: "fp32",
+      architectures: ["VisionEncoderDecoderModel"],
       ops: [
         "Add",
         "Cast",

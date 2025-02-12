@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-ConvNextV2Model-ONNX",
       dtype: "fp32",
+      architectures: ["ConvNextV2Model"],
       ops: [
         "Add",
         "Cast",
@@ -28,6 +29,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-ConvNextV2ForImageClassification-ONNX",
       dtype: "fp32",
+      architectures: ["ConvNextV2ForImageClassification"],
       ops: [
         "Add",
         "Cast",

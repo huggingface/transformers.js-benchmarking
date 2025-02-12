@@ -6,6 +6,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-HeliumForCausalLM",
       dtype: "fp32",
+      architectures: ["HeliumForCausalLM"],
       ops: [
         "Add",
         "Cast",

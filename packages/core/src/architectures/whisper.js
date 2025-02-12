@@ -6,6 +6,7 @@ export default {
     {
       model_id: "Xenova/tiny-random-WhisperForConditionalGeneration",
       dtype: "fp32",
+      architectures: ["WhisperForConditionalGeneration"],
       ops: [
         "Add",
         "Cast",
@@ -42,6 +43,7 @@ export default {
       model_id:
         "Xenova/tiny-random-WhisperForConditionalGeneration_timestamped",
       dtype: "fp32",
+      architectures: ["WhisperForConditionalGeneration"],
       ops: [
         "Add",
         "Concat",

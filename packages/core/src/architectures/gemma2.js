@@ -6,6 +6,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-Gemma2ForCausalLM",
       dtype: "fp32",
+      architectures: ["Gemma2ForCausalLM"],
       ops: [
         "Add",
         "Cast",

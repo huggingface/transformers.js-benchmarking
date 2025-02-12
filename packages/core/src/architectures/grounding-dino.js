@@ -7,6 +7,7 @@ export default {
       model_id:
         "hf-internal-testing/tiny-random-GroundingDinoForObjectDetection",
       dtype: "fp32",
+      architectures: ["GroundingDinoForObjectDetection"],
       ops: [
         "Add",
         "Cast",

@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-Data2VecTextModel-ONNX",
       dtype: "fp32",
+      architectures: ["Data2VecTextModel"],
       ops: [
         "Add",
         "Cast",
@@ -39,6 +40,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-Data2VecTextForQuestionAnswering-ONNX",
       dtype: "fp32",
+      architectures: ["Data2VecTextForQuestionAnswering"],
       ops: [
         "Add",
         "Cast",
@@ -74,6 +76,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-Data2VecTextForSequenceClassification-ONNX",
       dtype: "fp32",
+      architectures: ["Data2VecTextForSequenceClassification"],
       ops: [
         "Add",
         "Cast",
@@ -109,6 +112,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-Data2VecTextForMultipleChoice-ONNX",
       dtype: "fp32",
+      architectures: ["Data2VecTextForMultipleChoice"],
       ops: [
         "Add",
         "Cast",
@@ -136,39 +140,6 @@ export default {
         "Squeeze",
         "Sub",
         "Tanh",
-        "Transpose",
-        "Unsqueeze",
-        "Where",
-      ],
-    },
-    {
-      model_id:
-        "onnx-internal-testing/tiny-random-Data2VecTextForMaskedLM-ONNX",
-      dtype: "fp32",
-      ops: [
-        "Add",
-        "Cast",
-        "Concat",
-        "Constant",
-        "ConstantOfShape",
-        "CumSum",
-        "Div",
-        "Equal",
-        "Erf",
-        "Expand",
-        "Gather",
-        "Identity",
-        "MatMul",
-        "Mul",
-        "Not",
-        "Pow",
-        "ReduceMean",
-        "Reshape",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
         "Transpose",
         "Unsqueeze",
         "Where",

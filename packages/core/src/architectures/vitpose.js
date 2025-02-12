@@ -6,6 +6,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-VitPoseForPoseEstimation",
       dtype: "fp32",
+      architectures: ["VitPoseForPoseEstimation"],
       ops: [
         "Add",
         "BatchNormalization",

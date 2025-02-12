@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-MobileNetV2Model-ONNX",
       dtype: "fp32",
+      architectures: ["MobileNetV2Model"],
       ops: [
         "Add",
         "Cast",
@@ -25,6 +26,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-MobileNetV2ForImageClassification-ONNX",
       dtype: "fp32",
+      architectures: ["MobileNetV2ForImageClassification"],
       ops: [
         "Add",
         "Cast",

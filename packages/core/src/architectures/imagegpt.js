@@ -7,6 +7,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-ImageGPTForImageClassification-ONNX",
       dtype: "fp32",
+      architectures: ["ImageGPTForImageClassification"],
       ops: [
         "Add",
         "Cast",

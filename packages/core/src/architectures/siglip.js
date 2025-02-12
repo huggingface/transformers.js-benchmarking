@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-SiglipModel-ONNX",
       dtype: "fp32",
+      architectures: ["SiglipModel"],
       ops: [
         "Add",
         "Cast",

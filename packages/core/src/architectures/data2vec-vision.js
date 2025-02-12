@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-Data2VecVisionModel-ONNX",
       dtype: "fp32",
+      architectures: ["Data2VecVisionModel"],
       ops: [
         "Add",
         "Concat",
@@ -37,6 +38,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-Data2VecVisionForImageClassification-ONNX",
       dtype: "fp32",
+      architectures: ["Data2VecVisionForImageClassification"],
       ops: [
         "Add",
         "Concat",

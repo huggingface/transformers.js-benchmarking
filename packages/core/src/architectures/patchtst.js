@@ -6,70 +6,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-PatchTSTModel",
       dtype: "uint8",
-      ops: [
-        "Add",
-        "BatchNormalization",
-        "Cast",
-        "Clip",
-        "Concat",
-        "ConstantOfShape",
-        "Div",
-        "DynamicQuantizeLinear",
-        "Equal",
-        "Erf",
-        "Expand",
-        "Gather",
-        "MatMul",
-        "MatMulInteger",
-        "Mul",
-        "Pow",
-        "ReduceSum",
-        "Reshape",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-        "Where",
-      ],
-    },
-    {
-      model_id: "hf-internal-testing/tiny-random-PatchTSTModel",
-      dtype: "int8",
-      ops: [
-        "Add",
-        "BatchNormalization",
-        "Cast",
-        "Clip",
-        "Concat",
-        "ConstantOfShape",
-        "Div",
-        "DynamicQuantizeLinear",
-        "Equal",
-        "Erf",
-        "Expand",
-        "Gather",
-        "MatMul",
-        "MatMulInteger",
-        "Mul",
-        "Pow",
-        "ReduceSum",
-        "Reshape",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-        "Where",
-      ],
-    },
-    {
-      model_id: "hf-internal-testing/tiny-random-PatchTSTModel",
-      dtype: "quantized",
+      architectures: ["PatchTSTModel"],
       ops: [
         "Add",
         "BatchNormalization",
@@ -102,6 +39,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-PatchTSTModel",
       dtype: "fp32",
+      architectures: ["PatchTSTModel"],
       ops: [
         "Add",
         "BatchNormalization",
@@ -131,6 +69,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-PatchTSTModel",
       dtype: "bnb4",
+      architectures: ["PatchTSTModel"],
       ops: [
         "Add",
         "BatchNormalization",
@@ -161,6 +100,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-PatchTSTModel",
       dtype: "q4f16",
+      architectures: ["PatchTSTModel"],
       ops: [
         "Add",
         "BatchNormalization",
@@ -192,6 +132,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-PatchTSTModel",
       dtype: "fp16",
+      architectures: ["PatchTSTModel"],
       ops: [
         "Add",
         "BatchNormalization",
@@ -222,6 +163,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-PatchTSTModel",
       dtype: "q4",
+      architectures: ["PatchTSTModel"],
       ops: [
         "Add",
         "BatchNormalization",

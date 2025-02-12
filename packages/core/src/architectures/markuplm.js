@@ -7,6 +7,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-MarkupLMForQuestionAnswering-ONNX",
       dtype: "fp32",
+      architectures: ["MarkupLMForQuestionAnswering"],
       ops: [
         "Add",
         "Cast",
@@ -39,6 +40,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-MarkupLMForSequenceClassification-ONNX",
       dtype: "fp32",
+      architectures: ["MarkupLMForSequenceClassification"],
       ops: [
         "Add",
         "Cast",
@@ -71,35 +73,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-MarkupLMForTokenClassification-ONNX",
       dtype: "fp32",
-      ops: [
-        "Add",
-        "Cast",
-        "Concat",
-        "Constant",
-        "CumSum",
-        "Div",
-        "Equal",
-        "Erf",
-        "Gather",
-        "Identity",
-        "MatMul",
-        "Mul",
-        "Not",
-        "Pow",
-        "ReduceMean",
-        "Relu",
-        "Reshape",
-        "Shape",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-      ],
-    },
-    {
-      model_id: "onnx-internal-testing/tiny-random-MarkupLMModel-ONNX",
-      dtype: "fp32",
+      architectures: ["MarkupLMForTokenClassification"],
       ops: [
         "Add",
         "Cast",

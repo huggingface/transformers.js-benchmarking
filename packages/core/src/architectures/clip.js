@@ -6,6 +6,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-CLIPModel",
       dtype: "fp32",
+      architectures: ["CLIPModel"],
       ops: [
         "Add",
         "ArgMax",
@@ -41,6 +42,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-CLIPModel-ONNX",
       dtype: "fp32",
+      architectures: ["CLIPModel"],
       ops: [
         "Add",
         "ArgMax",

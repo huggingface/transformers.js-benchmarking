@@ -6,38 +6,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-BeitForImageClassification",
       dtype: "fp32",
-      ops: [
-        "Add",
-        "Concat",
-        "Constant",
-        "ConstantOfShape",
-        "Conv",
-        "Div",
-        "Equal",
-        "Erf",
-        "Expand",
-        "Gather",
-        "Gemm",
-        "Identity",
-        "MatMul",
-        "Mul",
-        "Pow",
-        "ReduceMean",
-        "Reshape",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-        "Where",
-      ],
-    },
-    {
-      model_id:
-        "onnx-internal-testing/tiny-random-BeitForImageClassification-ONNX",
-      dtype: "fp32",
+      architectures: ["BeitForImageClassification"],
       ops: [
         "Add",
         "Concat",
@@ -69,6 +38,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-BeitModel-ONNX",
       dtype: "fp32",
+      architectures: ["BeitModel"],
       ops: [
         "Add",
         "Concat",

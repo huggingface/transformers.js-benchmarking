@@ -6,6 +6,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-GlmForCausalLM",
       dtype: "fp32",
+      architectures: ["GlmForCausalLM"],
       ops: [
         "Add",
         "Cast",

@@ -6,6 +6,7 @@ export default {
     {
       model_id: "Xenova/tiny-random-StableLmForCausalLM",
       dtype: "fp32",
+      architectures: ["StableLmForCausalLM"],
       ops: [
         "Add",
         "Cast",
@@ -40,6 +41,7 @@ export default {
     {
       model_id: "Xenova/tiny-random-StableLmForCausalLM",
       dtype: "quantized",
+      architectures: ["StableLmForCausalLM"],
       ops: [
         "Add",
         "Cast",

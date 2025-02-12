@@ -7,6 +7,7 @@ export default {
       model_id:
         "hf-internal-testing/tiny-random-MusicgenForConditionalGeneration",
       dtype: "fp32",
+      architectures: ["MusicgenForConditionalGeneration"],
       ops: [
         "Abs",
         "Add",
@@ -54,6 +55,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-MusicgenForConditionalGeneration-ONNX",
       dtype: "fp32",
+      architectures: ["MusicgenForConditionalGeneration"],
       ops: [
         "Abs",
         "Add",

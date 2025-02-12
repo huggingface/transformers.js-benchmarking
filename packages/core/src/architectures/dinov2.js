@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-Dinov2Model-ONNX",
       dtype: "fp32",
+      architectures: ["Dinov2Model"],
       ops: [
         "Add",
         "Cast",
@@ -39,6 +40,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-Dinov2ForImageClassification-ONNX",
       dtype: "fp32",
+      architectures: ["Dinov2ForImageClassification"],
       ops: [
         "Add",
         "Cast",

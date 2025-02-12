@@ -6,6 +6,7 @@ export default {
     {
       model_id: "Xenova/tiny-random-Starcoder2ForCausalLM",
       dtype: "fp32",
+      architectures: ["Starcoder2ForCausalLM"],
       ops: [
         "Add",
         "Cast",
@@ -40,6 +41,7 @@ export default {
     {
       model_id: "Xenova/tiny-random-Starcoder2ForCausalLM",
       dtype: "quantized",
+      architectures: ["Starcoder2ForCausalLM"],
       ops: [
         "Add",
         "Cast",

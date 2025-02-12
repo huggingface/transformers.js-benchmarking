@@ -7,6 +7,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-TableTransformerForObjectDetection-ONNX",
       dtype: "fp32",
+      architectures: ["TableTransformerForObjectDetection"],
       ops: [
         "Add",
         "Cast",
@@ -46,6 +47,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-TableTransformerModel-ONNX",
       dtype: "fp32",
+      architectures: ["TableTransformerModel"],
       ops: [
         "Add",
         "Cast",

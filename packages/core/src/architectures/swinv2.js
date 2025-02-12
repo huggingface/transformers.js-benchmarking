@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-Swinv2Model-ONNX",
       dtype: "fp32",
+      architectures: ["Swinv2Model"],
       ops: [
         "Add",
         "Cast",
@@ -48,6 +49,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-Swinv2ForImageClassification-ONNX",
       dtype: "fp32",
+      architectures: ["Swinv2ForImageClassification"],
       ops: [
         "Add",
         "Cast",

@@ -7,6 +7,7 @@ export default {
       model_id:
         "hf-internal-testing/tiny-random-Idefics3ForConditionalGeneration",
       dtype: "fp32",
+      architectures: ["Idefics3ForConditionalGeneration"],
       ops: [
         "Add",
         "Cast",

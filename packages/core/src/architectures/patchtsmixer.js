@@ -6,58 +6,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-PatchTSMixerModel",
       dtype: "uint8",
-      ops: [
-        "Add",
-        "Cast",
-        "Clip",
-        "Concat",
-        "ConstantOfShape",
-        "Div",
-        "DynamicQuantizeLinear",
-        "Erf",
-        "MatMulInteger",
-        "Mul",
-        "Pow",
-        "ReduceMean",
-        "ReduceSum",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-      ],
-    },
-    {
-      model_id: "hf-internal-testing/tiny-random-PatchTSMixerModel",
-      dtype: "int8",
-      ops: [
-        "Add",
-        "Cast",
-        "Clip",
-        "Concat",
-        "ConstantOfShape",
-        "Div",
-        "DynamicQuantizeLinear",
-        "Erf",
-        "MatMulInteger",
-        "Mul",
-        "Pow",
-        "ReduceMean",
-        "ReduceSum",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-      ],
-    },
-    {
-      model_id: "hf-internal-testing/tiny-random-PatchTSMixerModel",
-      dtype: "quantized",
+      architectures: ["PatchTSMixerModel"],
       ops: [
         "Add",
         "Cast",
@@ -84,6 +33,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-PatchTSMixerModel",
       dtype: "fp32",
+      architectures: ["PatchTSMixerModel"],
       ops: [
         "Add",
         "Clip",
@@ -108,6 +58,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-PatchTSMixerModel",
       dtype: "bnb4",
+      architectures: ["PatchTSMixerModel"],
       ops: [
         "Add",
         "Clip",
@@ -132,6 +83,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-PatchTSMixerModel",
       dtype: "q4f16",
+      architectures: ["PatchTSMixerModel"],
       ops: [
         "Add",
         "Cast",
@@ -157,6 +109,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-PatchTSMixerModel",
       dtype: "fp16",
+      architectures: ["PatchTSMixerModel"],
       ops: [
         "Add",
         "Cast",
@@ -182,6 +135,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-PatchTSMixerModel",
       dtype: "q4",
+      architectures: ["PatchTSMixerModel"],
       ops: [
         "Add",
         "Clip",
@@ -206,6 +160,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-PatchTSMixerModel-ONNX",
       dtype: "fp32",
+      architectures: ["PatchTSMixerModel"],
       ops: [
         "Add",
         "Clip",

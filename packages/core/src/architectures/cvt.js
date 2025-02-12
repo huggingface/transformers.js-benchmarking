@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-CvtModel-ONNX",
       dtype: "fp32",
+      architectures: ["CvtModel"],
       ops: [
         "Add",
         "Concat",
@@ -38,6 +39,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-CvtForImageClassification-ONNX",
       dtype: "fp32",
+      architectures: ["CvtForImageClassification"],
       ops: [
         "Add",
         "Concat",

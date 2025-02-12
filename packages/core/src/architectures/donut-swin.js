@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-DonutSwinModel-ONNX",
       dtype: "fp32",
+      architectures: ["DonutSwinModel"],
       ops: [
         "Add",
         "Cast",

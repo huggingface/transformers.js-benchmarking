@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-PoolFormerModel-ONNX",
       dtype: "fp32",
+      architectures: ["PoolFormerModel"],
       ops: [
         "Add",
         "AveragePool",
@@ -25,6 +26,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-PoolFormerForImageClassification-ONNX",
       dtype: "fp32",
+      architectures: ["PoolFormerForImageClassification"],
       ops: [
         "Add",
         "AveragePool",

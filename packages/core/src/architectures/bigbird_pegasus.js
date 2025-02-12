@@ -7,6 +7,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-BigBirdPegasusForSequenceClassification-ONNX",
       dtype: "fp32",
+      architectures: ["BigBirdPegasusForSequenceClassification"],
       ops: [
         "Add",
         "Cast",
@@ -45,6 +46,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-BigBirdPegasusForQuestionAnswering-ONNX",
       dtype: "fp32",
+      architectures: ["BigBirdPegasusForQuestionAnswering"],
       ops: [
         "Add",
         "Cast",
@@ -81,6 +83,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-BigBirdPegasusForCausalLM-ONNX",
       dtype: "fp32",
+      architectures: ["BigBirdPegasusForCausalLM"],
       ops: [
         "Add",
         "Cast",
@@ -114,41 +117,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-BigBirdPegasusModel-ONNX",
       dtype: "fp32",
-      ops: [
-        "Add",
-        "Cast",
-        "Concat",
-        "Constant",
-        "ConstantOfShape",
-        "Div",
-        "Equal",
-        "Expand",
-        "Gather",
-        "Identity",
-        "If",
-        "Less",
-        "MatMul",
-        "Mul",
-        "Pow",
-        "Range",
-        "ReduceMean",
-        "Reshape",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Squeeze",
-        "Sub",
-        "Tanh",
-        "Transpose",
-        "Unsqueeze",
-        "Where",
-      ],
-    },
-    {
-      model_id:
-        "onnx-internal-testing/tiny-random-BigBirdPegasusForConditionalGeneration-ONNX",
-      dtype: "fp32",
+      architectures: ["BigBirdPegasusModel"],
       ops: [
         "Add",
         "Cast",

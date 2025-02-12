@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-ConvBertModel-ONNX",
       dtype: "fp32",
+      architectures: ["ConvBertModel"],
       ops: [
         "Add",
         "Cast",
@@ -36,6 +37,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-ConvBertForSequenceClassification-ONNX",
       dtype: "fp32",
+      architectures: ["ConvBertForSequenceClassification"],
       ops: [
         "Add",
         "Cast",
@@ -65,38 +67,9 @@ export default {
     },
     {
       model_id:
-        "onnx-internal-testing/tiny-random-ConvBertForTokenClassification-ONNX",
-      dtype: "fp32",
-      ops: [
-        "Add",
-        "Cast",
-        "Concat",
-        "Constant",
-        "Conv",
-        "Div",
-        "Erf",
-        "Gather",
-        "Identity",
-        "MatMul",
-        "Mul",
-        "Pad",
-        "Pow",
-        "Range",
-        "ReduceMean",
-        "Reshape",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-      ],
-    },
-    {
-      model_id:
         "onnx-internal-testing/tiny-random-ConvBertForMultipleChoice-ONNX",
       dtype: "fp32",
+      architectures: ["ConvBertForMultipleChoice"],
       ops: [
         "Add",
         "Cast",
@@ -126,38 +99,10 @@ export default {
       ],
     },
     {
-      model_id: "onnx-internal-testing/tiny-random-ConvBertForMaskedLM-ONNX",
-      dtype: "fp32",
-      ops: [
-        "Add",
-        "Cast",
-        "Concat",
-        "Constant",
-        "Conv",
-        "Div",
-        "Erf",
-        "Gather",
-        "Identity",
-        "MatMul",
-        "Mul",
-        "Pad",
-        "Pow",
-        "Range",
-        "ReduceMean",
-        "Reshape",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-      ],
-    },
-    {
       model_id:
         "onnx-internal-testing/tiny-random-ConvBertForQuestionAnswering-ONNX",
       dtype: "fp32",
+      architectures: ["ConvBertForQuestionAnswering"],
       ops: [
         "Add",
         "Cast",

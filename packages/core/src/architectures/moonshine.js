@@ -7,6 +7,7 @@ export default {
       model_id:
         "hf-internal-testing/tiny-random-MoonshineForConditionalGeneration",
       dtype: "fp32",
+      architectures: ["MoonshineForConditionalGeneration"],
       ops: [
         "Add",
         "Cast",

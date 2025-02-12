@@ -4,29 +4,9 @@ export default {
   model_type: "convnext",
   models: [
     {
-      model_id: "onnx-internal-testing/tiny-random-convnext-ONNX",
-      dtype: "fp32",
-      ops: [
-        "Add",
-        "Cast",
-        "Constant",
-        "Conv",
-        "Div",
-        "Erf",
-        "Gemm",
-        "Identity",
-        "MatMul",
-        "Mul",
-        "Pow",
-        "ReduceMean",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-      ],
-    },
-    {
       model_id: "onnx-internal-testing/tiny-random-ConvNextModel-ONNX",
       dtype: "fp32",
+      architectures: ["ConvNextModel"],
       ops: [
         "Add",
         "Cast",
@@ -48,6 +28,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-ConvNextForImageClassification-ONNX",
       dtype: "fp32",
+      architectures: ["ConvNextForImageClassification"],
       ops: [
         "Add",
         "Cast",

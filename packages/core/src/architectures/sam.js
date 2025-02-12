@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-SamModel-ONNX",
       dtype: "fp32",
+      architectures: ["SamModel"],
       ops: [
         "Add",
         "Cast",

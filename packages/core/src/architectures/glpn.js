@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-GLPNModel-ONNX",
       dtype: "fp32",
+      architectures: ["GLPNModel"],
       ops: [
         "Add",
         "Concat",
@@ -32,6 +33,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-GLPNForDepthEstimation-ONNX",
       dtype: "fp32",
+      architectures: ["GLPNForDepthEstimation"],
       ops: [
         "Add",
         "Concat",

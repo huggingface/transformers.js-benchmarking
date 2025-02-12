@@ -7,6 +7,7 @@ export default {
       model_id:
         "hf-internal-testing/tiny-random-Qwen2VLForConditionalGeneration",
       dtype: "fp32",
+      architectures: ["Qwen2VLForConditionalGeneration"],
       ops: [
         "Add",
         "Cast",

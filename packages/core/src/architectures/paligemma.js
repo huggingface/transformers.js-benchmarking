@@ -7,6 +7,7 @@ export default {
       model_id:
         "hf-internal-testing/tiny-random-PaliGemmaForConditionalGeneration",
       dtype: "fp32",
+      architectures: ["PaliGemmaForConditionalGeneration"],
       ops: [
         "Add",
         "Cast",

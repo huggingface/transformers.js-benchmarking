@@ -6,34 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-SqueezeBertModel-ONNX",
       dtype: "fp32",
-      ops: [
-        "Add",
-        "Cast",
-        "Concat",
-        "Constant",
-        "Conv",
-        "Div",
-        "Erf",
-        "Gather",
-        "Identity",
-        "MatMul",
-        "Mul",
-        "Pow",
-        "ReduceMean",
-        "Reshape",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-      ],
-    },
-    {
-      model_id:
-        "onnx-internal-testing/tiny-random-SqueezeBertForTokenClassification-ONNX",
-      dtype: "fp32",
+      architectures: ["SqueezeBertModel"],
       ops: [
         "Add",
         "Cast",
@@ -62,6 +35,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-SqueezeBertForMultipleChoice-ONNX",
       dtype: "fp32",
+      architectures: ["SqueezeBertForMultipleChoice"],
       ops: [
         "Add",
         "Cast",
@@ -93,6 +67,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-SqueezeBertForQuestionAnswering-ONNX",
       dtype: "fp32",
+      architectures: ["SqueezeBertForQuestionAnswering"],
       ops: [
         "Add",
         "Cast",
@@ -120,36 +95,10 @@ export default {
       ],
     },
     {
-      model_id: "onnx-internal-testing/tiny-random-SqueezeBertForMaskedLM-ONNX",
-      dtype: "fp32",
-      ops: [
-        "Add",
-        "Cast",
-        "Concat",
-        "Constant",
-        "Conv",
-        "Div",
-        "Erf",
-        "Gather",
-        "Identity",
-        "MatMul",
-        "Mul",
-        "Pow",
-        "ReduceMean",
-        "Reshape",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-      ],
-    },
-    {
       model_id:
         "onnx-internal-testing/tiny-random-SqueezeBertForSequenceClassification-ONNX",
       dtype: "fp32",
+      architectures: ["SqueezeBertForSequenceClassification"],
       ops: [
         "Add",
         "Cast",

@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-Owlv2Model-ONNX",
       dtype: "fp32",
+      architectures: ["Owlv2Model"],
       ops: [
         "Add",
         "ArgMax",
@@ -45,6 +46,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-Owlv2ForObjectDetection-ONNX",
       dtype: "fp32",
+      architectures: ["Owlv2ForObjectDetection"],
       ops: [
         "Add",
         "ArgMax",

@@ -6,6 +6,7 @@ export default {
     {
       model_id: "Xenova/tiny-random-PhiForCausalLM",
       dtype: "fp32",
+      architectures: ["PhiForCausalLM"],
       ops: [
         "Add",
         "Cast",
@@ -40,6 +41,7 @@ export default {
     {
       model_id: "Xenova/tiny-random-PhiForCausalLM",
       dtype: "quantized",
+      architectures: ["PhiForCausalLM"],
       ops: [
         "Add",
         "Cast",
@@ -78,6 +80,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-PhiForSequenceClassification-ONNX",
       dtype: "fp32",
+      architectures: ["PhiForSequenceClassification"],
       ops: [
         "Add",
         "ArgMax",
@@ -118,43 +121,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-PhiForCausalLM-ONNX",
       dtype: "fp32",
-      ops: [
-        "Add",
-        "Cast",
-        "Concat",
-        "Constant",
-        "ConstantOfShape",
-        "Cos",
-        "Div",
-        "Equal",
-        "Erf",
-        "Expand",
-        "Gather",
-        "Greater",
-        "Identity",
-        "MatMul",
-        "Mul",
-        "Neg",
-        "Pow",
-        "Range",
-        "ReduceMean",
-        "Reshape",
-        "ScatterND",
-        "Shape",
-        "Sin",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Trilu",
-        "Unsqueeze",
-        "Where",
-      ],
-    },
-    {
-      model_id: "onnx-internal-testing/tiny-random-PhiModel-ONNX",
-      dtype: "fp32",
+      architectures: ["PhiForCausalLM"],
       ops: [
         "Add",
         "Cast",

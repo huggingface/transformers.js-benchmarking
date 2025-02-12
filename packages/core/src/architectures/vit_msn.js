@@ -6,6 +6,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-ViTMSNForImageClassification",
       dtype: "fp32",
+      architectures: ["ViTMSNForImageClassification"],
       ops: [
         "Add",
         "Concat",
@@ -35,6 +36,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-ViTMSNForImageClassification-ONNX",
       dtype: "fp32",
+      architectures: ["ViTMSNForImageClassification"],
       ops: [
         "Add",
         "Cast",
@@ -67,6 +69,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-ViTMSNModel-ONNX",
       dtype: "fp32",
+      architectures: ["ViTMSNModel"],
       ops: [
         "Add",
         "Cast",

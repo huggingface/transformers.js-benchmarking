@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-SegformerModel-ONNX",
       dtype: "fp32",
+      architectures: ["SegformerModel"],
       ops: [
         "Add",
         "Concat",
@@ -33,6 +34,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-SegformerForImageClassification-ONNX",
       dtype: "fp32",
+      architectures: ["SegformerForImageClassification"],
       ops: [
         "Add",
         "Concat",

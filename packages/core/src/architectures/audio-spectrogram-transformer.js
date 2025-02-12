@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-ASTModel-ONNX",
       dtype: "fp32",
+      architectures: ["ASTModel"],
       ops: [
         "Add",
         "Cast",
@@ -38,6 +39,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-ASTForAudioClassification-ONNX",
       dtype: "fp32",
+      architectures: ["ASTForAudioClassification"],
       ops: [
         "Add",
         "Cast",

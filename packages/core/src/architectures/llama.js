@@ -6,6 +6,7 @@ export default {
     {
       model_id: "hf-internal-testing/tiny-random-LlamaForCausalLM",
       dtype: "fp32",
+      architectures: ["LlamaForCausalLM"],
       ops: [
         "Add",
         "And",
@@ -42,6 +43,7 @@ export default {
     {
       model_id: "onnx-community/tiny-random-LlamaForCausalLM-ONNX",
       dtype: "fp32",
+      architectures: ["LlamaForCausalLM"],
       ops: [
         "Add",
         "Cast",
@@ -72,6 +74,7 @@ export default {
     {
       model_id: "onnx-community/tiny-random-LlamaForCausalLM-ONNX",
       dtype: "q4f16",
+      architectures: ["LlamaForCausalLM"],
       ops: [
         "Add",
         "Cast",
@@ -82,36 +85,6 @@ export default {
         "Gather",
         "Less",
         "MatMulNBits",
-        "Mul",
-        "MultiHeadAttention",
-        "Range",
-        "Reshape",
-        "RotaryEmbedding",
-        "Shape",
-        "Sigmoid",
-        "SimplifiedLayerNormalization",
-        "SkipSimplifiedLayerNormalization",
-        "Slice",
-        "Squeeze",
-        "Sub",
-        "Tile",
-        "Unsqueeze",
-        "Where",
-      ],
-    },
-    {
-      model_id: "onnx-community/tiny-random-LlamaForCausalLM-ONNX",
-      dtype: "fp16",
-      ops: [
-        "Add",
-        "Cast",
-        "Concat",
-        "ConstantOfShape",
-        "Equal",
-        "Expand",
-        "Gather",
-        "Less",
-        "MatMul",
         "Mul",
         "MultiHeadAttention",
         "Range",
@@ -132,6 +105,7 @@ export default {
     {
       model_id: "onnx-community/tiny-random-LlamaForCausalLM-ONNX",
       dtype: "q4",
+      architectures: ["LlamaForCausalLM"],
       ops: [
         "Cast",
         "Gather",
@@ -149,6 +123,7 @@ export default {
     {
       model_id: "Xenova/tiny-random-LlamaForCausalLM-optimized",
       dtype: "q4f16",
+      architectures: ["LlamaForCausalLM"],
       ops: [
         "Add",
         "Cast",
@@ -180,6 +155,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-LlamaForCausalLM-ONNX",
       dtype: "fp32",
+      architectures: ["LlamaForCausalLM"],
       ops: [
         "Add",
         "Cast",

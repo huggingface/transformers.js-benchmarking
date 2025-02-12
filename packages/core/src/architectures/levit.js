@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-LevitModel-ONNX",
       dtype: "fp32",
+      architectures: ["LevitModel"],
       ops: [
         "Add",
         "BatchNormalization",
@@ -31,6 +32,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-LevitForImageClassificationWithTeacher-ONNX",
       dtype: "fp32",
+      architectures: ["LevitForImageClassificationWithTeacher"],
       ops: [
         "Add",
         "BatchNormalization",
@@ -59,6 +61,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-LevitForImageClassification-ONNX",
       dtype: "fp32",
+      architectures: ["LevitForImageClassification"],
       ops: [
         "Add",
         "BatchNormalization",

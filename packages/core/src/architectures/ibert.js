@@ -6,6 +6,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-IBertModel-ONNX",
       dtype: "fp32",
+      architectures: ["IBertModel"],
       ops: [
         "Abs",
         "Add",
@@ -45,6 +46,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-IBertForSequenceClassification-ONNX",
       dtype: "fp32",
+      architectures: ["IBertForSequenceClassification"],
       ops: [
         "Abs",
         "Add",
@@ -85,6 +87,7 @@ export default {
     {
       model_id: "onnx-internal-testing/tiny-random-IBertForMultipleChoice-ONNX",
       dtype: "fp32",
+      architectures: ["IBertForMultipleChoice"],
       ops: [
         "Abs",
         "Add",
@@ -128,6 +131,7 @@ export default {
       model_id:
         "onnx-internal-testing/tiny-random-IBertForQuestionAnswering-ONNX",
       dtype: "fp32",
+      architectures: ["IBertForQuestionAnswering"],
       ops: [
         "Abs",
         "Add",
@@ -166,47 +170,9 @@ export default {
       ],
     },
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-IBertForTokenClassification-ONNX",
-      dtype: "fp32",
-      ops: [
-        "Abs",
-        "Add",
-        "Cast",
-        "Clip",
-        "Concat",
-        "Constant",
-        "ConstantOfShape",
-        "CumSum",
-        "Div",
-        "Equal",
-        "Floor",
-        "Gather",
-        "Identity",
-        "MatMul",
-        "Max",
-        "Min",
-        "Mul",
-        "Neg",
-        "Not",
-        "Pow",
-        "Reciprocal",
-        "ReduceMax",
-        "ReduceMean",
-        "ReduceSum",
-        "Reshape",
-        "Round",
-        "Shape",
-        "Sign",
-        "Sqrt",
-        "Sub",
-        "Transpose",
-        "Unsqueeze",
-      ],
-    },
-    {
       model_id: "onnx-internal-testing/tiny-random-IBertForMaskedLM-ONNX",
       dtype: "fp32",
+      architectures: ["IBertForMaskedLM"],
       ops: [
         "Abs",
         "Add",
