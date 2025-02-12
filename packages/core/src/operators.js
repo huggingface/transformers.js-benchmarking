@@ -312,4 +312,7 @@ const COM_MICROSOFT_OPERATORS = new Set([
   "QEmbedLayerNormalization",
 ]);
 
-export const ALL_OPERATORS = new Set([...BASE_OPERATORS, ...COM_MICROSOFT_OPERATORS]);
+export const ALL_OPERATORS = new Set([
+  ...BASE_OPERATORS,
+  ...COM_MICROSOFT_OPERATORS,
+]);
