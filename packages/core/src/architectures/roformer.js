@@ -69,9 +69,9 @@ export default {
       ],
     },
     {
-      model_id: "Xenova/tiny-random-RoFormerForTokenClassification",
+      model_id: "Xenova/tiny-random-RoFormerForSequenceClassification",
       dtype: "quantized",
-      architectures: ["RoFormerForTokenClassification"],
+      architectures: ["RoFormerForSequenceClassification"],
       ops: [
         "Add",
         "Cast",
@@ -101,9 +101,9 @@ export default {
       ],
     },
     {
-      model_id: "Xenova/tiny-random-RoFormerForTokenClassification",
+      model_id: "Xenova/tiny-random-RoFormerForSequenceClassification",
       dtype: "fp32",
-      architectures: ["RoFormerForTokenClassification"],
+      architectures: ["RoFormerForSequenceClassification"],
       ops: [
         "Add",
         "Cast",
@@ -112,6 +112,7 @@ export default {
         "Div",
         "Erf",
         "Gather",
+        "Gemm",
         "Identity",
         "MatMul",
         "Mul",
@@ -130,9 +131,9 @@ export default {
       ],
     },
     {
-      model_id: "Xenova/tiny-random-RoFormerForSequenceClassification",
+      model_id: "Xenova/tiny-random-RoFormerForTokenClassification",
       dtype: "fp32",
-      architectures: ["RoFormerForSequenceClassification"],
+      architectures: ["RoFormerForTokenClassification"],
       ops: [
         "Add",
         "Cast",
@@ -141,7 +142,6 @@ export default {
         "Div",
         "Erf",
         "Gather",
-        "Gemm",
         "Identity",
         "MatMul",
         "Mul",

@@ -44,9 +44,9 @@ export default {
       ],
     },
     {
-      model_id: "onnx-internal-testing/tiny-random-UMT5Model-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-T5Model-ONNX",
       dtype: "fp32",
-      architectures: ["UMT5Model"],
+      architectures: ["T5Model"],
       ops: [
         "Abs",
         "Add",
