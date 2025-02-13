@@ -10,26 +10,29 @@ A versatile toolkit designed to measure and compare the performance of Transform
 ## Getting Started
 
 1. **Run Benchmarks**
-    - web ([online demo](https://huggingface.co/spaces/onnx-internal-testing/transformers.js-benchmarking)):
-        ```sh
-        cd packages/web/
-        npm i
-        npm run dev
-        ```
 
-    - Node.js
-        ```sh
-        cd packages/node/
-        npm i
-        node index.js
-        ```
+   - web ([online demo](https://huggingface.co/spaces/onnx-internal-testing/transformers.js-benchmarking)):
 
-    - Bun
-        ```sh
-        cd packages/bun/
-        bun install
-        bun run index.ts
-        ```
+     ```sh
+     cd packages/web/
+     npm i
+     npm run dev
+     ```
+
+   - Node.js
+
+     ```sh
+     cd packages/node/
+     npm i
+     node index.js
+     ```
+
+   - Bun
+     ```sh
+     cd packages/bun/
+     bun install
+     bun run index.ts
+     ```
 
 2. **(Optional) Prepare model operations**
    Download and build model operations with:
@@ -39,6 +42,7 @@ A versatile toolkit designed to measure and compare the performance of Transform
    ```
 
 ## Repository Structure
+
 ```
 ├── packages
 │   ├── core         # Core engine powering the benchmarking suite.
@@ -52,4 +56,3 @@ A versatile toolkit designed to measure and compare the performance of Transform
 ## Additional Resources
 
 For more details on available models and further information, check out the models on [Hugging Face](https://huggingface.co/models?library=transformers.js).
-
