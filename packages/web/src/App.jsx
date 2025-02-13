@@ -109,6 +109,14 @@ export default function TestSuiteUI() {
               >
                 <option value="wasm">wasm</option>
                 <option value="webgpu">webgpu</option>
+                {"ml" in navigator && (
+                  <>
+                    <option value="webnn">webnn</option>
+                    <option value="webnn-cpu">webnn-cpu</option>
+                    <option value="webnn-gpu">webnn-gpu</option>
+                    <option value="webnn-npu">webnn-npu</option>
+                  </>
+                )}
               </select>
             </div>
             <div>
@@ -150,7 +158,6 @@ export default function TestSuiteUI() {
                     </tr>
                   );
                 }
-                console.log(result);
                 const avgDuration =
                   Object.values(result.stats).reduce(
                     (sum, stat) => sum + stat.mean,
