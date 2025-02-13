@@ -1,4 +1,4 @@
-export const DEFAULT_NUM_WARMUP_RUNS = 5;
+export const DEFAULT_NUM_WARMUP_RUNS = 3;
 export const DEFAULT_NUM_RUNS = 50;
 
 export class Test {

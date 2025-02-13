@@ -20,7 +20,10 @@ class PipelineTest extends Test {
     const { task, model_id, options } = this.config;
 
     const { result: pipe, time: setupTime } = await time(() =>
-      pipeline(task, model_id, options ?? DEFAULT_MODEL_OPTIONS),
+      pipeline(task, model_id, {
+        ...DEFAULT_MODEL_OPTIONS,
+        ...options,
+      }),
     );
 
     const stats = {};
@@ -30,8 +33,8 @@ class PipelineTest extends Test {
       const times = [];
       const numRuns = DEFAULT_NUM_WARMUP_RUNS + (num_runs ?? DEFAULT_NUM_RUNS);
       for (let i = 0; i < numRuns; ++i) {
-        const { result, time: executionTime } = await time(
-            () => pipe(...inputs),
+        const { result, time: executionTime } = await time(() =>
+          pipe(...inputs),
         );
         const { pass, message } = (test_function ?? toBeCloseToNested)(
           result,
@@ -40,9 +43,7 @@ class PipelineTest extends Test {
         if (!pass) {
           console.log(result);
           console.log(expected);
-          throw new Error(
-            `Test "${this.name} (${test.name})" failed: ${message()}`,
-          );
+          throw new Error(message());
         }
         if (i >= DEFAULT_NUM_WARMUP_RUNS) times.push(executionTime);
       }
@@ -60,14 +61,18 @@ class PipelineTest extends Test {
 }
 
 class BaseTestSuite {
-  constructor(config) {
+  constructor(config, options) {
     this.config = config;
+    this.options = options;
   }
 
   async *run() {
     // NOTE: Perform one test at a time to ensure accurate timing
     for await (const test of this.collect()) {
-      const result = await test.run();
+      const result = await test.run().catch((error) => {
+        console.error(error);
+        return { error: error.message };
+      });
       yield { name: test.name, result };
     }
   }
@@ -78,27 +83,33 @@ class BaseTestSuite {
  * This is the most common way of using Transformers.js
  */
 export class PipelineTestSuite extends BaseTestSuite {
-  constructor() {
-    super(Object.values(TASKS));
+  constructor(options) {
+    super(Object.values(TASKS), options);
   }
 
   *collect() {
     for (const task of this.config) {
       if (task.skip) continue;
-      yield new PipelineTest(task);
+      yield new PipelineTest({
+        ...task,
+        config: { ...task.config, options: this.options },
+      });
     }
   }
 }
 
 export class ModelTestSuite extends BaseTestSuite {
-  constructor() {
-    super(MODELS);
+  constructor(options) {
+    super(MODELS, options);
   }
 
   *collect() {
     for (const [model_type, tests] of Object.entries(this.config)) {
       for (const { name, test, config } of tests) {
-        yield new test(config);
+        yield new test({
+          ...config,
+          options: this.options,
+        });
       }
     }
   }

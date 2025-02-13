@@ -1,15 +1,16 @@
 import {
-  AutoProcessor,
-  Qwen2VLForConditionalGeneration,
+  AutoTokenizer,
+  AutoImageProcessor,
+  CLIPModel,
 } from "@huggingface/transformers";
 
-import { DEFAULT_MODEL_OPTIONS } from "../defaults.js";
 import { DEFAULT_NUM_RUNS, DEFAULT_NUM_WARMUP_RUNS, Test } from "../test.js";
 
 import { DUMMY_IMAGE } from "../inputs.js";
 import { computeStatistics, time, toBeCloseToNested } from "../utils.js";
+import { DEFAULT_MODEL_OPTIONS } from "../defaults.js";
 
-class Qwen2VLTest extends Test {
+class CLIPTest extends Test {
   constructor(config) {
     super(config);
     this.name = config.name;
@@ -21,43 +22,41 @@ class Qwen2VLTest extends Test {
       result: [test, expected, cleanup],
       time: setupTime,
     } = await time(async () => {
-      const model_id =
-        "hf-internal-testing/tiny-random-Qwen2VLForConditionalGeneration";
-      const processor = await AutoProcessor.from_pretrained(model_id);
-      const model = await Qwen2VLForConditionalGeneration.from_pretrained(
-        model_id,
-        {
-          ...DEFAULT_MODEL_OPTIONS,
-          ...this.options,
-        },
-      );
-      const image = DUMMY_IMAGE;
-      const conversation = [
-        {
-          role: "user",
-          content: [
-            { type: "image" },
-            { type: "text", text: "Describe this image." },
-          ],
-        },
-      ];
-      const text = processor.apply_chat_template(conversation, {
-        add_generation_prompt: true,
-      });
-      const inputs = await processor(text, image);
+      const model_id = "onnx-internal-testing/tiny-random-CLIPModel-ONNX";
 
-      const expected = [" finishing Patio无意 możliwości𬱖"];
+      const tokenizer = await AutoTokenizer.from_pretrained(model_id);
+      const processor = await AutoImageProcessor.from_pretrained(model_id);
+      const model = await CLIPModel.from_pretrained(model_id, {
+        ...DEFAULT_MODEL_OPTIONS,
+        ...this.options,
+      });
+      const texts = ["a photo of a car", "a photo of a football match"];
+      const text_inputs = tokenizer(texts, { padding: true, truncation: true });
+      const image_inputs = await processor(DUMMY_IMAGE);
+
+      const expected = {
+        logits_per_image: [1, 2],
+        logits_per_text: [2, 1],
+        text_embeds: [2, 64],
+        image_embeds: [1, 64],
+      };
       return [
         async () => {
-          const outputs = await model.generate({
-            ...inputs,
-            max_new_tokens: 5,
+          const {
+            logits_per_image,
+            logits_per_text,
+            text_embeds,
+            image_embeds,
+          } = await model({
+            ...text_inputs,
+            ...image_inputs,
           });
-          const decoded = processor.batch_decode(
-            outputs.slice(null, [inputs.input_ids.dims.at(-1), null]),
-            { skip_special_tokens: true },
-          );
-          return decoded;
+          return {
+            logits_per_image: logits_per_image.dims,
+            logits_per_text: logits_per_text.dims,
+            text_embeds: text_embeds.dims,
+            image_embeds: image_embeds.dims,
+          };
         },
         expected,
         () => model.dispose(),
@@ -92,10 +91,10 @@ class Qwen2VLTest extends Test {
 
 export default [
   {
-    test: Qwen2VLTest,
+    test: CLIPTest,
     config: {
-      name: "Qwen2VLForConditionalGeneration",
-      num_runs: 10,
+      name: "CLIPModel",
+      num_runs: 20,
     },
   },
 ];

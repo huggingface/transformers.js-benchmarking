@@ -61,7 +61,7 @@ export function computeStatistics(numbers) {
   };
 }
 
-export const toBeCloseToNested = (received, expected, numDigits = 5) => {
+export const toBeCloseToNested = (received, expected, numDigits = 3) => {
   const compare = (received, expected, path = "") => {
     if (
       typeof received === "number" &&

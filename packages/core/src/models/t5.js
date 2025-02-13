@@ -1,15 +1,12 @@
 import {
-  AutoProcessor,
-  Qwen2VLForConditionalGeneration,
+  AutoTokenizer,
+  T5ForConditionalGeneration,
 } from "@huggingface/transformers";
 
-import { DEFAULT_MODEL_OPTIONS } from "../defaults.js";
 import { DEFAULT_NUM_RUNS, DEFAULT_NUM_WARMUP_RUNS, Test } from "../test.js";
-
-import { DUMMY_IMAGE } from "../inputs.js";
 import { computeStatistics, time, toBeCloseToNested } from "../utils.js";
 
-class Qwen2VLTest extends Test {
+class T5Test extends Test {
   constructor(config) {
     super(config);
     this.name = config.name;
@@ -21,42 +18,21 @@ class Qwen2VLTest extends Test {
       result: [test, expected, cleanup],
       time: setupTime,
     } = await time(async () => {
-      const model_id =
-        "hf-internal-testing/tiny-random-Qwen2VLForConditionalGeneration";
-      const processor = await AutoProcessor.from_pretrained(model_id);
-      const model = await Qwen2VLForConditionalGeneration.from_pretrained(
-        model_id,
-        {
-          ...DEFAULT_MODEL_OPTIONS,
-          ...this.options,
-        },
-      );
-      const image = DUMMY_IMAGE;
-      const conversation = [
-        {
-          role: "user",
-          content: [
-            { type: "image" },
-            { type: "text", text: "Describe this image." },
-          ],
-        },
-      ];
-      const text = processor.apply_chat_template(conversation, {
-        add_generation_prompt: true,
+      const model_id = "Xenova/t5-small";
+      const tokenizer = await AutoTokenizer.from_pretrained(model_id);
+      const model = await T5ForConditionalGeneration.from_pretrained(model_id, {
+        ...this.options,
       });
-      const inputs = await processor(text, image);
+      const inputs = await tokenizer("Translate English to French: Hello.");
 
-      const expected = [" finishing Patio无意 możliwości𬱖"];
+      const expected = ["<pad> Bonjour.</s>"];
       return [
         async () => {
           const outputs = await model.generate({
             ...inputs,
             max_new_tokens: 5,
           });
-          const decoded = processor.batch_decode(
-            outputs.slice(null, [inputs.input_ids.dims.at(-1), null]),
-            { skip_special_tokens: true },
-          );
+          const decoded = tokenizer.batch_decode(outputs);
           return decoded;
         },
         expected,
@@ -92,9 +68,9 @@ class Qwen2VLTest extends Test {
 
 export default [
   {
-    test: Qwen2VLTest,
+    test: T5Test,
     config: {
-      name: "Qwen2VLForConditionalGeneration",
+      name: "T5ForConditionalGeneration",
       num_runs: 10,
     },
   },
