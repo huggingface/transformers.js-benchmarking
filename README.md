@@ -51,5 +51,5 @@ A versatile toolkit designed to measure and compare the performance of Transform
 
 ## Additional Resources
 
-For more details on available models and further information, visit the [Transformers.js page at Hugging Face](https://huggingface.co/models?library=transformers.js).
+For more details on available models and further information, check out the models on [Hugging Face](https://huggingface.co/models?library=transformers.js).
 
