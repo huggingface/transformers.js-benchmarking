@@ -3,6 +3,7 @@ import argparse
 import re
 import time
 import json
+import csv
 import logging
 from pathlib import Path
 from typing import Set, Dict, Tuple, List, Any, Callable
@@ -154,7 +155,7 @@ def collect_model_ops(
         if repo_id in BANNED_REPOS:
             logging.info("Skipping banned model: %s", repo_id)
             continue
-        if not ALLOWED_REPO_PATTERN.search(repo_id):
+        if not include_all_models and not ALLOWED_REPO_PATTERN.search(repo_id):
             logging.info("Skipping disallowed model: %s", repo_id)
             continue
 
@@ -264,6 +265,16 @@ def collect_model_ops(
         for m_type in architecture_ops.keys():
             safe_m_type = m_type.replace('-', '_')
             fp.write(f"export {{ default as {safe_m_type} }} from './architectures/{m_type}.js';\n")
+    
+    download_counts = {repo_id: model.downloads for repo_id, model in unique_models.items()}
+    rows = []
+    for (m_type, repo_id, quantization), ops in model_type_ops.items():
+        rows.append([repo_id, download_counts.get(repo_id, 0), quantization, len(ops), ", ".join(sorted(ops))])
+    rows.sort(key=lambda row: (download_counts.get(row[0], 0), row[2]), reverse=True)
+    with open("./data/model_ops.csv", "w", newline="") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["model_id", "downloads (past month)", "quantization", "num_ops", "ops"])
+        writer.writerows(rows)
 
 def main() -> None:
     """
