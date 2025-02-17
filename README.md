@@ -9,7 +9,15 @@ A versatile toolkit designed to measure and compare the performance of Transform
 
 ## Getting Started
 
-1. **Run Benchmarks**
+1. **Install core dependencies** first
+
+     ```sh
+     cd packages/core/
+     npm i
+     ```
+     Then run with one of the following:
+
+2. **Run Benchmarks**
 
    - web ([online demo](https://huggingface.co/spaces/onnx-internal-testing/transformers.js-benchmarking)):
 
@@ -34,12 +42,21 @@ A versatile toolkit designed to measure and compare the performance of Transform
      bun run index.ts
      ```
 
-2. **(Optional) Prepare model operations**
-   Download and build model operations with:
+4. **(Optional) Prepare model operations**
 
-   ```sh
-   npm run build:architectures
-   ```
+   - Install Python dependencies:
+
+      ```sh
+      python3 -m venv .venv
+      source .venv/bin/activate
+      python3 -m pip install -r scripts/requirements.txt
+      ```
+
+   - Download and build model operations with:
+
+      ```sh
+      npm run build:architectures
+      ```
 
 ## Repository Structure
 
