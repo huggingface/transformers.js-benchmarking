@@ -11,11 +11,12 @@ A versatile toolkit designed to measure and compare the performance of Transform
 
 1. **Install core dependencies** first
 
-     ```sh
-     cd packages/core/
-     npm i
-     ```
-     Then run with one of the following:
+   ```sh
+   cd packages/core/
+   npm i
+   ```
+
+   Then run with one of the following:
 
 2. **Run Benchmarks**
 
@@ -42,21 +43,21 @@ A versatile toolkit designed to measure and compare the performance of Transform
      bun run index.ts
      ```
 
-4. **(Optional) Prepare model operations**
+3. **(Optional) Prepare model operations**
 
    - Install Python dependencies:
 
-      ```sh
-      python3 -m venv .venv
-      source .venv/bin/activate
-      python3 -m pip install -r scripts/requirements.txt
-      ```
+     ```sh
+     python3 -m venv .venv
+     source .venv/bin/activate
+     python3 -m pip install -r scripts/requirements.txt
+     ```
 
    - Download and build model operations with:
 
-      ```sh
-      npm run build:architectures
-      ```
+     ```sh
+     npm run build:architectures
+     ```
 
 ## Repository Structure
 
