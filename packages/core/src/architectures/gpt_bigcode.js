@@ -4,7 +4,7 @@ export default {
   model_type: "gpt_bigcode",
   models: [
     {
-      model_id: "hf-internal-testing/tiny-random-GPTBigCodeForCausalLM",
+      model_id: "onnx-internal-testing/tiny-random-GPTBigCodeForCausalLM-ONNX",
       dtype: "fp32",
       architectures: ["GPTBigCodeForCausalLM"],
       ops: [

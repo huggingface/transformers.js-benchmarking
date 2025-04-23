@@ -4,6 +4,12 @@ export default {
   model_type: "resnet",
   models: [
     {
+      model_id: "onnx-internal-testing/tiny-random-ResNetModel-ONNX",
+      dtype: "fp32",
+      architectures: ["ResNetModel"],
+      ops: ["Add", "Conv", "Identity", "MaxPool", "Relu"],
+    },
+    {
       model_id:
         "onnx-internal-testing/tiny-random-ResNetForImageClassification-ONNX",
       dtype: "fp32",
@@ -18,12 +24,6 @@ export default {
         "MaxPool",
         "Relu",
       ],
-    },
-    {
-      model_id: "onnx-internal-testing/tiny-random-ResNetModel-ONNX",
-      dtype: "fp32",
-      architectures: ["ResNetModel"],
-      ops: ["Add", "Conv", "Identity", "MaxPool", "Relu"],
     },
   ],
 };

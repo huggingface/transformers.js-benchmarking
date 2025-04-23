@@ -4,7 +4,7 @@ export default {
   model_type: "roberta",
   models: [
     {
-      model_id: "hf-internal-testing/tiny-random-RobertaModel",
+      model_id: "onnx-internal-testing/tiny-random-RobertaModel-ONNX",
       dtype: "fp32",
       architectures: ["RobertaModel"],
       ops: [
@@ -38,42 +38,7 @@ export default {
     },
     {
       model_id:
-        "hf-internal-testing/tiny-random-RobertaForSequenceClassification",
-      dtype: "fp32",
-      architectures: ["RobertaForSequenceClassification"],
-      ops: [
-        "Add",
-        "Cast",
-        "Concat",
-        "Constant",
-        "ConstantOfShape",
-        "CumSum",
-        "Div",
-        "Equal",
-        "Erf",
-        "Expand",
-        "Gather",
-        "Gemm",
-        "Identity",
-        "MatMul",
-        "Mul",
-        "Not",
-        "Pow",
-        "ReduceMean",
-        "Reshape",
-        "Shape",
-        "Slice",
-        "Softmax",
-        "Sqrt",
-        "Sub",
-        "Tanh",
-        "Transpose",
-        "Unsqueeze",
-        "Where",
-      ],
-    },
-    {
-      model_id: "hf-internal-testing/tiny-random-RobertaForQuestionAnswering",
+        "onnx-internal-testing/tiny-random-RobertaForQuestionAnswering-ONNX",
       dtype: "fp32",
       architectures: ["RobertaForQuestionAnswering"],
       ops: [

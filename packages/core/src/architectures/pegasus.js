@@ -4,9 +4,10 @@ export default {
   model_type: "pegasus",
   models: [
     {
-      model_id: "onnx-internal-testing/tiny-random-PegasusModel-ONNX",
+      model_id:
+        "onnx-internal-testing/tiny-random-PegasusForConditionalGeneration-ONNX",
       dtype: "fp32",
-      architectures: ["PegasusModel"],
+      architectures: ["PegasusForConditionalGeneration"],
       ops: [
         "Add",
         "Cast",

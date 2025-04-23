@@ -4,7 +4,8 @@ export default {
   model_type: "hiera",
   models: [
     {
-      model_id: "hf-internal-testing/tiny-random-HieraForImageClassification",
+      model_id:
+        "onnx-internal-testing/tiny-random-HieraForImageClassification-ONNX",
       dtype: "fp32",
       architectures: ["HieraForImageClassification"],
       ops: [

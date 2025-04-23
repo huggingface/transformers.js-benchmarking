@@ -4,9 +4,10 @@ export default {
   model_type: "owlv2",
   models: [
     {
-      model_id: "onnx-internal-testing/tiny-random-Owlv2Model-ONNX",
+      model_id:
+        "onnx-internal-testing/tiny-random-Owlv2ForObjectDetection-ONNX",
       dtype: "fp32",
-      architectures: ["Owlv2Model"],
+      architectures: ["Owlv2ForObjectDetection"],
       ops: [
         "Add",
         "ArgMax",
@@ -16,11 +17,14 @@ export default {
         "ConstantOfShape",
         "Conv",
         "Div",
+        "Einsum",
+        "Elu",
         "Equal",
-        "Exp",
+        "Erf",
         "Expand",
         "Flatten",
         "Gather",
+        "Greater",
         "Identity",
         "Less",
         "MatMul",
@@ -43,10 +47,9 @@ export default {
       ],
     },
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-Owlv2ForObjectDetection-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-Owlv2Model-ONNX",
       dtype: "fp32",
-      architectures: ["Owlv2ForObjectDetection"],
+      architectures: ["Owlv2Model"],
       ops: [
         "Add",
         "ArgMax",
@@ -56,14 +59,11 @@ export default {
         "ConstantOfShape",
         "Conv",
         "Div",
-        "Einsum",
-        "Elu",
         "Equal",
-        "Erf",
+        "Exp",
         "Expand",
         "Flatten",
         "Gather",
-        "Greater",
         "Identity",
         "Less",
         "MatMul",

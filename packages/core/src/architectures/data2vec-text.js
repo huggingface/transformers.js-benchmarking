@@ -4,9 +4,10 @@ export default {
   model_type: "data2vec-text",
   models: [
     {
-      model_id: "onnx-internal-testing/tiny-random-Data2VecTextModel-ONNX",
+      model_id:
+        "onnx-internal-testing/tiny-random-Data2VecTextForMaskedLM-ONNX",
       dtype: "fp32",
-      architectures: ["Data2VecTextModel"],
+      architectures: ["Data2VecTextForMaskedLM"],
       ops: [
         "Add",
         "Cast",

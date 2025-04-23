@@ -5,9 +5,9 @@ export default {
   models: [
     {
       model_id:
-        "onnx-internal-testing/tiny-random-Wav2Vec2ConformerForCTC-ONNX",
+        "onnx-internal-testing/tiny-random-Wav2Vec2ConformerForAudioFrameClassification-ONNX",
       dtype: "fp32",
-      architectures: ["Wav2Vec2ConformerForCTC"],
+      architectures: ["Wav2Vec2ConformerForAudioFrameClassification"],
       ops: [
         "Add",
         "Cast",

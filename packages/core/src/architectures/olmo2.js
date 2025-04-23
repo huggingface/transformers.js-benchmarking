@@ -4,7 +4,7 @@ export default {
   model_type: "olmo2",
   models: [
     {
-      model_id: "hf-internal-testing/tiny-random-Olmo2ForCausalLM",
+      model_id: "onnx-internal-testing/tiny-random-Olmo2ForCausalLM-ONNX",
       dtype: "fp32",
       architectures: ["Olmo2ForCausalLM"],
       ops: [

@@ -4,10 +4,9 @@ export default {
   model_type: "markuplm",
   models: [
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-MarkupLMForTokenClassification-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-MarkupLMModel-ONNX",
       dtype: "fp32",
-      architectures: ["MarkupLMForTokenClassification"],
+      architectures: ["MarkupLMModel"],
       ops: [
         "Add",
         "Cast",

@@ -4,9 +4,9 @@ export default {
   model_type: "mctct",
   models: [
     {
-      model_id: "onnx-internal-testing/tiny-random-MCTCTModel-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-MCTCTForCTC-ONNX",
       dtype: "fp32",
-      architectures: ["MCTCTModel"],
+      architectures: ["MCTCTForCTC"],
       ops: [
         "Add",
         "Cast",

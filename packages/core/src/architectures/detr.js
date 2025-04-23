@@ -4,7 +4,7 @@ export default {
   model_type: "detr",
   models: [
     {
-      model_id: "hf-internal-testing/tiny-random-DetrForObjectDetection",
+      model_id: "onnx-internal-testing/tiny-random-DetrForObjectDetection-ONNX",
       dtype: "fp32",
       architectures: ["DetrForObjectDetection"],
       ops: [

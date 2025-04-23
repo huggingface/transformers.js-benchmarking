@@ -4,7 +4,7 @@ export default {
   model_type: "granite",
   models: [
     {
-      model_id: "hf-internal-testing/tiny-random-GraniteForCausalLM",
+      model_id: "onnx-internal-testing/tiny-random-GraniteForCausalLM-ONNX",
       dtype: "fp32",
       architectures: ["GraniteForCausalLM"],
       ops: [
