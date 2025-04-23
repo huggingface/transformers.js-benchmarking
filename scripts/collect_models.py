@@ -206,7 +206,7 @@ def collect_model_ops(
             cache_path = None
             if use_cache:
                 cache_folder = CACHE_DIR / repo_id
-                cache_folder.mkdir(exist_ok=True)
+                cache_folder.mkdir(exist_ok=True, parents=True)
                 cache_path = cache_folder / file_name
                 if cache_path.exists():
                     model_proto = onnx.load(str(cache_path), load_external_data=False)
