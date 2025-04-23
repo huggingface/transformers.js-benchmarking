@@ -5,6 +5,7 @@ import time
 import json
 import csv
 import logging
+from requests.exceptions import RequestException
 from pathlib import Path
 from typing import Set, Dict, Tuple, List, Any, Callable
 
@@ -91,9 +92,8 @@ def retry_operation(func: Callable, *args, max_retries: int = 5, initial_delay: 
             return func(*args, **kwargs)
         except RuntimeError:
             return False
-        except Exception as e:
-            status = getattr(e, "response", None)
-            if status and (status.status_code == 429 or 500 <= status.status_code < 600):
+        except RequestException as e:
+            if (status := e.response) and (status.status_code == 429 or 500 <= status.status_code < 600):
                 logging.warning(
                     f"Attempt {attempt + 1} failed with status {status.status_code}. Retrying after {delay} seconds..."
                 )
@@ -262,7 +262,7 @@ def collect_model_ops(
     arch_index_path = core_dir / "architectures.js"
     with arch_index_path.open("w") as fp:
         fp.write("// NOTE: This file has been auto-generated. Do not edit directly.\n")
-        for m_type in architecture_ops.keys():
+        for m_type in sorted(architecture_ops.keys()):
             safe_m_type = m_type.replace('-', '_')
             fp.write(f"export {{ default as {safe_m_type} }} from './architectures/{m_type}.js';\n")
     
