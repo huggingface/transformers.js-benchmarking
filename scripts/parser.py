@@ -4,6 +4,8 @@ import onnx
 from google.protobuf.internal.encoder import _VarintBytes
 from google.protobuf.message import DecodeError
 
+MB = 1024 * 1024
+
 # --- Helpers for reading varints and fields from a binary stream ---
 # Based on https://raw.githubusercontent.com/onnx/onnx/refs/heads/main/onnx/onnx.proto
 
@@ -16,7 +18,6 @@ def read_varint(stream):
         b = stream.read(1)
         if not b:
             raise EOFError("Unexpected EOF while reading varint")
-        # In Python 3, b is a bytes object; get its integer value:
         b = b[0]
         result |= (b & 0x7F) << shift
         bytes_read += 1
@@ -124,7 +125,18 @@ def reconstruct_model_bytes(before, new_graph_bytes, after):
     graph_field = tag + length + new_graph_bytes
     return before + graph_field + after
 
-def stream_parse_model_header(url, initial_chunk_size=1 * 1024 * 1024):
+def try_parse_buffer(buffer):
+    # Try extracting the required bytes (without initializers)
+    before, graph_field_raw, after = extract_graph_field(buffer)
+    filtered_graph = filter_graph_bytes(graph_field_raw)
+    new_model_bytes = reconstruct_model_bytes(before, filtered_graph, after)
+
+    # Successfully extracted everything we need!
+    model = onnx.ModelProto()
+    model.ParseFromString(new_model_bytes)
+    return model  # Return the graph-only model
+
+def stream_parse_model_header(url, initial_chunk_size=1 * MB):
     """
     Stream in the ONNX model, extracting the header and graph structure.
     Downloads the minimum necessary bytes dynamically.
@@ -147,21 +159,13 @@ def stream_parse_model_header(url, initial_chunk_size=1 * 1024 * 1024):
 
     while True:
         try:
-            # Try extracting the required bytes (without initializers)
-            before, graph_field_raw, after = extract_graph_field(buffer)
-            filtered_graph = filter_graph_bytes(graph_field_raw)
-            new_model_bytes = reconstruct_model_bytes(before, filtered_graph, after)
-
-            # Successfully extracted everything we need!
-            model = onnx.ModelProto()
-            model.ParseFromString(new_model_bytes)
-            return model  # Return the graph-only model
+            return try_parse_buffer(buffer)
 
         except (ValueError, DecodeError, EOFError) as e:
             # If the graph field wasn't fully found yet, request more data (4 MB).
-            next_chunk_size = 4 * 1024 * 1024
+            next_chunk_size = 4 * MB
             end_range = total_loaded + next_chunk_size - 1
-            if end_range > 40 * 1024 * 1024:
+            if end_range > 40 * MB:
                 raise RuntimeError("Model file is too large to parse.")
             next_chunk = fetch_range(total_loaded, end_range)
             buffer.extend(next_chunk)
