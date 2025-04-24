@@ -5,6 +5,7 @@ from requests.adapters import HTTPAdapter
 import onnx
 from google.protobuf.internal.encoder import _VarintBytes
 from urllib3.util.retry import Retry
+from tqdm import tqdm
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 
@@ -22,7 +23,7 @@ class LoggingRetry(Retry):
         return new_retry
 
 class RangeFetcher:
-    def __init__(self, url, retries=10, backoff_factor=2, timeout=10):
+    def __init__(self, url, retries=10, backoff_factor=2, timeout=10, progress_bar=None):
         self.url = url
         self.session = requests.Session()
         self.buffer = bytearray()
@@ -41,6 +42,8 @@ class RangeFetcher:
         adapter = HTTPAdapter(max_retries=retry_strategy)
         self.session.mount("http://", adapter)
         self.session.mount("https://", adapter)
+
+        self.progress_bar = progress_bar if progress_bar is not None else tqdm(desc="Downloading model", unit="B", unit_scale=True)
 
     def _add_range(self, start, data):
         """Insert `data` at offset `start` into self.buffer, merge loaded_ranges."""
@@ -72,11 +75,11 @@ class RangeFetcher:
         if end is None:
             # open‐ended final fetch
             headers = {"Range": f"bytes={start}-"}
-            logging.info(f"Requesting bytes {start}-<EOF>")
+            self.progress_bar.set_description(f"Fetching bytes {start}-EOF")
             resp = self.session.get(self.url, headers=headers); resp.raise_for_status()
             chunk = resp.content
             self.total_downloaded += len(chunk)
-            logging.info(f" → {len(chunk)} bytes  (total {self.total_downloaded})")
+            self.progress_bar.update(len(chunk))
             self._add_range(start, chunk)
             return self.buffer[start:start+len(chunk)]
 
@@ -94,15 +97,14 @@ class RangeFetcher:
 
         # fetch each hole (enforcing MIN_CHUNK_SIZE)
         for (s, e) in to_fetch:
-            length = e - s + 1
-            if length < MIN_CHUNK_SIZE:
+            if (e - s + 1) < MIN_CHUNK_SIZE:
                 e = s + MIN_CHUNK_SIZE - 1
             headers = {"Range": f"bytes={s}-{e}"}
-            logging.info(f"Requesting bytes {s}-{e}")
+            self.progress_bar.set_description(f"Fetching bytes {s}-{e}")
             resp = self.session.get(self.url, headers=headers); resp.raise_for_status()
             chunk = resp.content
             self.total_downloaded += len(chunk)
-            logging.info(f" → {len(chunk)} bytes  (total {self.total_downloaded})")
+            self.progress_bar.update(len(chunk))
             self._add_range(s, chunk)
 
         return self.buffer[start:end+1]
@@ -211,25 +213,22 @@ def extract_graph_structure(fetcher, graph_off, graph_len):
     return bytes(out)
 
 def stream_parse_model_header(url):
-    fetcher = RangeFetcher(url)
-
+    # Create a new nested progress bar (position=1 for enabling nested bars)
+    progress = tqdm(desc="Downloading model", unit="B", unit_scale=True, position=1)
+    fetcher = RangeFetcher(url, progress_bar=progress)
+    
     # 1) find graph payload
     before, graph_off, graph_len = locate_graph_header(fetcher)
-
     # 2) stream‐parse only node/name/input/output fields
     graph_struct = extract_graph_structure(fetcher, graph_off, graph_len)
-
     # 3) fetch any ModelProto fields after graph (small headers, metadata)
     after = fetcher.fetch(graph_off + graph_len, None)
-
     # 4) rebuild minimal ModelProto
     tag = _VarintBytes((7 << 3) | 2)
     length = _VarintBytes(len(graph_struct))
     model_bytes = before + tag + length + graph_struct + after
-
     # 5) parse with ONNX
     model = onnx.ModelProto()
     model.ParseFromString(model_bytes)
-
-    logging.info(f"Total bytes downloaded: {fetcher.total_downloaded}")
+    fetcher.progress_bar.close()  # close progress bar when done
     return model
