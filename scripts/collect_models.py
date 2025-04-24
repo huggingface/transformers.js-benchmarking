@@ -6,6 +6,7 @@ import json
 import csv
 import logging
 from requests.exceptions import RequestException
+from huggingface_hub.errors import HfHubHTTPError
 from pathlib import Path
 from typing import Set, Dict, Tuple, List, Any, Callable
 
@@ -69,7 +70,7 @@ def get_operators(model: onnx.ModelProto) -> Set[str]:
     traverse_graph(model.graph)
     return operators
 
-def retry_operation(func: Callable, *args, max_retries: int = 5, initial_delay: int = 1, **kwargs) -> Any:
+def retry_operation(func: Callable, *args, max_retries: int = 10, initial_delay: int = 1, **kwargs) -> Any:
     """
     Retry a given operation with exponential backoff.
 
@@ -92,8 +93,9 @@ def retry_operation(func: Callable, *args, max_retries: int = 5, initial_delay: 
             return func(*args, **kwargs)
         except RuntimeError:
             return False
-        except RequestException as e:
-            if (status := e.response) and (status.status_code == 429 or 500 <= status.status_code < 600):
+        except (RequestException, HfHubHTTPError) as e:
+            status = getattr(e, "response", None)
+            if status and (status.status_code == 429 or 500 <= status.status_code < 600):
                 logging.warning(
                     f"Attempt {attempt + 1} failed with status {status.status_code}. Retrying after {delay} seconds..."
                 )
