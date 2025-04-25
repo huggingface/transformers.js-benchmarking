@@ -13,6 +13,7 @@ from typing import Set, Dict, Tuple, List, Any, Callable
 from huggingface_hub import HfApi, hf_hub_url, HfFileSystem
 import onnx
 from tqdm import tqdm
+import gc
 
 from parser import stream_parse_model_header
 
@@ -227,6 +228,8 @@ def collect_model_ops(
                 if key not in model_type_ops:
                     model_type_ops[key] = set()
                 model_type_ops[key].update(ops_set)
+                del model_proto
+                gc.collect()
 
         if use_cache and not processed:
             with processed_repo_list_path.open("a") as f:
