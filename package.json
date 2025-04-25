@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "build:architectures": "rm -rf ./packages/core/src/architectures/* && python ./scripts/collect_models.py && npm run format",
+    "upload:model-explorer": "huggingface-cli upload onnx-community/model-explorer ./scripts/.cache . --repo-type dataset --create-pr",
     "format": "npx prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
