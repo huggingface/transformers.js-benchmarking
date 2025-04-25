@@ -109,6 +109,17 @@ class RangeFetcher:
 
         return self.buffer[start:end+1]
 
+    def close(self):
+        """Clean up resources to prevent memory leaks."""
+        self.session.close()
+        self.progress_bar.close()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.close()
+
 # Based on https://raw.githubusercontent.com/onnx/onnx/refs/heads/main/onnx/onnx.proto
 
 def read_varint(stream):
@@ -212,17 +223,47 @@ def extract_graph_structure(fetcher, graph_off, graph_len):
 
     return bytes(out)
 
+def strip_data(graph, size_limit=1 * 1024 * 1024):
+    # Remove initializers in the current graph.
+    del graph.initializer[:]
+    # Iterate over nodes to process any subgraphs.
+    for node in graph.node:
+        for attr in node.attribute:
+            # If attribute holds a single subgraph.
+            if attr.type == onnx.AttributeProto.GRAPH:
+                strip_data(attr.g)
+            # If attribute holds multiple subgraphs.
+            elif attr.type == onnx.AttributeProto.GRAPHS:
+                for subgraph in attr.graphs:
+                    strip_data(subgraph)
+
+        if node.op_type == "Constant":
+            # ONNX Constant nodes store their tensor under attribute 'value'
+            for attr in node.attribute:
+                if attr.name == "value" and attr.t is not None:
+                    tp = attr.t
+                    data_size = len(tp.raw_data) if tp.raw_data else 0
+                    if data_size > size_limit:
+                        # Remove all data fields from TensorProto
+                        tp.ClearField("raw_data")
+                        tp.ClearField("float_data")
+                        tp.ClearField("int32_data")
+                        tp.ClearField("int64_data")
+                        tp.ClearField("double_data")
+                        tp.ClearField("uint64_data")
+                        tp.ClearField("string_data")
+                        # dims, data_type, and name are kept intact
+
 def stream_parse_model_header(url):
     # Create a new nested progress bar (position=1 for enabling nested bars)
     progress = tqdm(desc="Downloading model", unit="B", unit_scale=True, position=1)
-    fetcher = RangeFetcher(url, progress_bar=progress)
-    
-    # 1) find graph payload
-    before, graph_off, graph_len = locate_graph_header(fetcher)
-    # 2) stream‐parse only node/name/input/output fields
-    graph_struct = extract_graph_structure(fetcher, graph_off, graph_len)
-    # 3) fetch any ModelProto fields after graph (small headers, metadata)
-    after = fetcher.fetch(graph_off + graph_len, None)
+    with RangeFetcher(url, progress_bar=progress) as fetcher:
+        # 1) find graph payload
+        before, graph_off, graph_len = locate_graph_header(fetcher)
+        # 2) stream‐parse only node/name/input/output fields
+        graph_struct = extract_graph_structure(fetcher, graph_off, graph_len)
+        # 3) fetch any ModelProto fields after graph (small headers, metadata)
+        after = fetcher.fetch(graph_off + graph_len, None)
     # 4) rebuild minimal ModelProto
     tag = _VarintBytes((7 << 3) | 2)
     length = _VarintBytes(len(graph_struct))
@@ -230,5 +271,5 @@ def stream_parse_model_header(url):
     # 5) parse with ONNX
     model = onnx.ModelProto()
     model.ParseFromString(model_bytes)
-    fetcher.progress_bar.close()  # close progress bar when done
+    strip_data(model.graph)
     return model
