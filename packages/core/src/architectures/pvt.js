@@ -4,9 +4,9 @@ export default {
   model_type: "pvt",
   models: [
     {
-      model_id: "onnx-internal-testing/tiny-random-PvtModel-ONNX",
+      model_id: "hf-internal-testing/tiny-random-PvtForImageClassification",
       dtype: "fp32",
-      architectures: ["PvtModel"],
+      architectures: ["PvtForImageClassification"],
       ops: [
         "Add",
         "Cast",
@@ -19,6 +19,7 @@ export default {
         "Erf",
         "Expand",
         "Gather",
+        "Gemm",
         "Identity",
         "MatMul",
         "Mul",
@@ -37,10 +38,9 @@ export default {
       ],
     },
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-PvtForImageClassification-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-PvtModel-ONNX",
       dtype: "fp32",
-      architectures: ["PvtForImageClassification"],
+      architectures: ["PvtModel"],
       ops: [
         "Add",
         "Cast",
@@ -53,7 +53,6 @@ export default {
         "Erf",
         "Expand",
         "Gather",
-        "Gemm",
         "Identity",
         "MatMul",
         "Mul",

@@ -5,7 +5,7 @@ export default {
   models: [
     {
       model_id: "Xenova/tiny-random-Phi3ForCausalLM",
-      dtype: "fp32",
+      dtype: "q4",
       architectures: ["Phi3ForCausalLM"],
       ops: [
         "Add",
@@ -21,6 +21,7 @@ export default {
         "Identity",
         "Less",
         "MatMul",
+        "MatMulNBits",
         "Mul",
         "Neg",
         "Pow",
@@ -82,7 +83,7 @@ export default {
     },
     {
       model_id: "Xenova/tiny-random-Phi3ForCausalLM",
-      dtype: "int8",
+      dtype: "quantized",
       architectures: ["Phi3ForCausalLM"],
       ops: [
         "Add",
@@ -123,7 +124,7 @@ export default {
     },
     {
       model_id: "Xenova/tiny-random-Phi3ForCausalLM",
-      dtype: "q4",
+      dtype: "fp32",
       architectures: ["Phi3ForCausalLM"],
       ops: [
         "Add",
@@ -139,7 +140,6 @@ export default {
         "Identity",
         "Less",
         "MatMul",
-        "MatMulNBits",
         "Mul",
         "Neg",
         "Pow",

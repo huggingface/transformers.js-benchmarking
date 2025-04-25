@@ -4,9 +4,9 @@ export default {
   model_type: "sew-d",
   models: [
     {
-      model_id: "onnx-internal-testing/tiny-random-SEWDModel-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-SEWDForCTC-ONNX",
       dtype: "fp32",
-      architectures: ["SEWDModel"],
+      architectures: ["SEWDForCTC"],
       ops: [
         "Abs",
         "Add",

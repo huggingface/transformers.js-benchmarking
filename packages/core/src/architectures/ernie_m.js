@@ -5,7 +5,7 @@ export default {
   models: [
     {
       model_id: "Xenova/tiny-random-ErnieMForSequenceClassification",
-      dtype: "fp32",
+      dtype: "q4",
       architectures: ["ErnieMForSequenceClassification"],
       ops: [
         "Add",
@@ -20,6 +20,7 @@ export default {
         "Gemm",
         "Identity",
         "MatMul",
+        "MatMulNBits",
         "Mul",
         "Pow",
         "ReduceMean",
@@ -66,7 +67,7 @@ export default {
     },
     {
       model_id: "Xenova/tiny-random-ErnieMForSequenceClassification",
-      dtype: "int8",
+      dtype: "quantized",
       architectures: ["ErnieMForSequenceClassification"],
       ops: [
         "Add",
@@ -98,7 +99,7 @@ export default {
     },
     {
       model_id: "Xenova/tiny-random-ErnieMForSequenceClassification",
-      dtype: "q4",
+      dtype: "fp32",
       architectures: ["ErnieMForSequenceClassification"],
       ops: [
         "Add",
@@ -113,7 +114,6 @@ export default {
         "Gemm",
         "Identity",
         "MatMul",
-        "MatMulNBits",
         "Mul",
         "Pow",
         "ReduceMean",
@@ -129,7 +129,7 @@ export default {
     },
     {
       model_id: "Xenova/tiny-random-ErnieMForTokenClassification",
-      dtype: "fp32",
+      dtype: "q4",
       architectures: ["ErnieMForTokenClassification"],
       ops: [
         "Add",
@@ -143,6 +143,7 @@ export default {
         "Gather",
         "Identity",
         "MatMul",
+        "MatMulNBits",
         "Mul",
         "Pow",
         "ReduceMean",
@@ -186,7 +187,7 @@ export default {
     },
     {
       model_id: "Xenova/tiny-random-ErnieMForTokenClassification",
-      dtype: "int8",
+      dtype: "quantized",
       architectures: ["ErnieMForTokenClassification"],
       ops: [
         "Add",
@@ -217,7 +218,7 @@ export default {
     },
     {
       model_id: "Xenova/tiny-random-ErnieMForTokenClassification",
-      dtype: "q4",
+      dtype: "fp32",
       architectures: ["ErnieMForTokenClassification"],
       ops: [
         "Add",
@@ -231,7 +232,6 @@ export default {
         "Gather",
         "Identity",
         "MatMul",
-        "MatMulNBits",
         "Mul",
         "Pow",
         "ReduceMean",
@@ -246,7 +246,7 @@ export default {
     },
     {
       model_id: "Xenova/tiny-random-ErnieMForQuestionAnswering",
-      dtype: "fp32",
+      dtype: "q4",
       architectures: ["ErnieMForQuestionAnswering"],
       ops: [
         "Add",
@@ -260,6 +260,7 @@ export default {
         "Gather",
         "Identity",
         "MatMul",
+        "MatMulNBits",
         "Mul",
         "Pow",
         "ReduceMean",
@@ -307,7 +308,7 @@ export default {
     },
     {
       model_id: "Xenova/tiny-random-ErnieMForQuestionAnswering",
-      dtype: "int8",
+      dtype: "quantized",
       architectures: ["ErnieMForQuestionAnswering"],
       ops: [
         "Add",
@@ -340,7 +341,7 @@ export default {
     },
     {
       model_id: "Xenova/tiny-random-ErnieMForQuestionAnswering",
-      dtype: "q4",
+      dtype: "fp32",
       architectures: ["ErnieMForQuestionAnswering"],
       ops: [
         "Add",
@@ -354,7 +355,6 @@ export default {
         "Gather",
         "Identity",
         "MatMul",
-        "MatMulNBits",
         "Mul",
         "Pow",
         "ReduceMean",

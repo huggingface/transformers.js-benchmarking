@@ -4,11 +4,11 @@ export default {
   model_type: "swin2sr",
   models: [
     {
-      model_id: "Xenova/tiny-random-Swin2SRModel",
+      model_id:
+        "hf-internal-testing/tiny-random-Swin2SRForImageSuperResolution",
       dtype: "fp32",
-      architectures: ["Swin2SRModel"],
+      architectures: ["Swin2SRForImageSuperResolution"],
       ops: [
-        "Abs",
         "Add",
         "Cast",
         "Clip",
@@ -16,6 +16,7 @@ export default {
         "Constant",
         "ConstantOfShape",
         "Conv",
+        "DepthToSpace",
         "Div",
         "Equal",
         "Erf",
@@ -23,6 +24,7 @@ export default {
         "Expand",
         "Gather",
         "Identity",
+        "LeakyRelu",
         "MatMul",
         "Mod",
         "Mul",
@@ -30,8 +32,8 @@ export default {
         "Pad",
         "Pow",
         "Range",
+        "ReduceL2",
         "ReduceMean",
-        "ReduceSum",
         "Relu",
         "Reshape",
         "ScatterND",
@@ -92,10 +94,11 @@ export default {
       ],
     },
     {
-      model_id: "onnx-internal-testing/tiny-random-Swin2SRModel-ONNX",
+      model_id: "Xenova/tiny-random-Swin2SRModel",
       dtype: "fp32",
       architectures: ["Swin2SRModel"],
       ops: [
+        "Abs",
         "Add",
         "Cast",
         "Clip",
@@ -117,8 +120,8 @@ export default {
         "Pad",
         "Pow",
         "Range",
-        "ReduceL2",
         "ReduceMean",
+        "ReduceSum",
         "Relu",
         "Reshape",
         "ScatterND",
@@ -134,10 +137,9 @@ export default {
       ],
     },
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-Swin2SRForImageSuperResolution-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-Swin2SRModel-ONNX",
       dtype: "fp32",
-      architectures: ["Swin2SRForImageSuperResolution"],
+      architectures: ["Swin2SRModel"],
       ops: [
         "Add",
         "Cast",
@@ -146,7 +148,6 @@ export default {
         "Constant",
         "ConstantOfShape",
         "Conv",
-        "DepthToSpace",
         "Div",
         "Equal",
         "Erf",
@@ -154,7 +155,6 @@ export default {
         "Expand",
         "Gather",
         "Identity",
-        "LeakyRelu",
         "MatMul",
         "Mod",
         "Mul",

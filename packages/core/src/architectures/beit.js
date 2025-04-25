@@ -4,8 +4,7 @@ export default {
   model_type: "beit",
   models: [
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-BeitForImageClassification-ONNX",
+      model_id: "hf-internal-testing/tiny-random-BeitForImageClassification",
       dtype: "fp32",
       architectures: ["BeitForImageClassification"],
       ops: [

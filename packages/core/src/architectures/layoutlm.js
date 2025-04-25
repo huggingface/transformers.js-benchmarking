@@ -34,9 +34,9 @@ export default {
       ],
     },
     {
-      model_id: "onnx-internal-testing/tiny-random-LayoutLMModel-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-LayoutLMForMaskedLM-ONNX",
       dtype: "fp32",
-      architectures: ["LayoutLMModel"],
+      architectures: ["LayoutLMForMaskedLM"],
       ops: [
         "Add",
         "Cast",

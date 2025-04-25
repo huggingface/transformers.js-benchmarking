@@ -4,7 +4,7 @@ export default {
   model_type: "groupvit",
   models: [
     {
-      model_id: "onnx-internal-testing/tiny-random-GroupViTModel-ONNX",
+      model_id: "hf-internal-testing/tiny-random-GroupViTModel",
       dtype: "fp32",
       architectures: ["GroupViTModel"],
       ops: [
