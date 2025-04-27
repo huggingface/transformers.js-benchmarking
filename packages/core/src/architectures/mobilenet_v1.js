@@ -4,6 +4,35 @@ export default {
   model_type: "mobilenet_v1",
   models: [
     {
+      model_id: "onnx-community/mobilenet_v1_0.75_192",
+      dtype: "q4",
+      architectures: ["MobileNetV1ForImageClassification"],
+      ops: ["Clip", "Conv", "Flatten", "Gemm", "GlobalAveragePool"],
+    },
+    {
+      model_id: "onnx-community/mobilenet_v1_0.75_192",
+      dtype: "quantized",
+      architectures: ["MobileNetV1ForImageClassification"],
+      ops: [
+        "Add",
+        "Cast",
+        "Clip",
+        "ConvInteger",
+        "DynamicQuantizeLinear",
+        "Flatten",
+        "GlobalAveragePool",
+        "MatMulInteger",
+        "Mul",
+        "Reshape",
+      ],
+    },
+    {
+      model_id: "onnx-community/mobilenet_v1_0.75_192",
+      dtype: "fp16",
+      architectures: ["MobileNetV1ForImageClassification"],
+      ops: ["Cast", "Clip", "Conv", "Flatten", "Gemm", "GlobalAveragePool"],
+    },
+    {
       model_id:
         "onnx-internal-testing/tiny-random-MobileNetV1ForImageClassification-ONNX",
       dtype: "fp32",

@@ -4,9 +4,10 @@ export default {
   model_type: "nystromformer",
   models: [
     {
-      model_id: "onnx-internal-testing/tiny-random-NystromformerModel-ONNX",
+      model_id:
+        "onnx-internal-testing/tiny-random-NystromformerForQuestionAnswering-ONNX",
       dtype: "fp32",
-      architectures: ["NystromformerModel"],
+      architectures: ["NystromformerForQuestionAnswering"],
       ops: [
         "Add",
         "Cast",
@@ -25,7 +26,9 @@ export default {
         "Shape",
         "Slice",
         "Softmax",
+        "Split",
         "Sqrt",
+        "Squeeze",
         "Sub",
         "Transpose",
         "Unsqueeze",
@@ -62,10 +65,9 @@ export default {
       ],
     },
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-NystromformerForQuestionAnswering-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-NystromformerModel-ONNX",
       dtype: "fp32",
-      architectures: ["NystromformerForQuestionAnswering"],
+      architectures: ["NystromformerModel"],
       ops: [
         "Add",
         "Cast",
@@ -84,9 +86,7 @@ export default {
         "Shape",
         "Slice",
         "Softmax",
-        "Split",
         "Sqrt",
-        "Squeeze",
         "Sub",
         "Transpose",
         "Unsqueeze",

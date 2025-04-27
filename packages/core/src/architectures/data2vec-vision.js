@@ -4,9 +4,10 @@ export default {
   model_type: "data2vec-vision",
   models: [
     {
-      model_id: "onnx-internal-testing/tiny-random-Data2VecVisionModel-ONNX",
+      model_id:
+        "onnx-internal-testing/tiny-random-Data2VecVisionForImageClassification-ONNX",
       dtype: "fp32",
-      architectures: ["Data2VecVisionModel"],
+      architectures: ["Data2VecVisionForImageClassification"],
       ops: [
         "Add",
         "Concat",
@@ -18,6 +19,7 @@ export default {
         "Erf",
         "Expand",
         "Gather",
+        "Gemm",
         "Identity",
         "MatMul",
         "Mul",
@@ -35,10 +37,9 @@ export default {
       ],
     },
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-Data2VecVisionForImageClassification-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-Data2VecVisionModel-ONNX",
       dtype: "fp32",
-      architectures: ["Data2VecVisionForImageClassification"],
+      architectures: ["Data2VecVisionModel"],
       ops: [
         "Add",
         "Concat",
@@ -50,7 +51,6 @@ export default {
         "Erf",
         "Expand",
         "Gather",
-        "Gemm",
         "Identity",
         "MatMul",
         "Mul",

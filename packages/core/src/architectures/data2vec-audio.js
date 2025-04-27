@@ -4,9 +4,10 @@ export default {
   model_type: "data2vec-audio",
   models: [
     {
-      model_id: "onnx-internal-testing/tiny-random-Data2VecAudioModel-ONNX",
+      model_id:
+        "onnx-internal-testing/tiny-random-Data2VecAudioForSequenceClassification-ONNX",
       dtype: "fp32",
-      architectures: ["Data2VecAudioModel"],
+      architectures: ["Data2VecAudioForSequenceClassification"],
       ops: [
         "Add",
         "Cast",
@@ -16,6 +17,7 @@ export default {
         "Div",
         "Erf",
         "Gather",
+        "Gemm",
         "Identity",
         "MatMul",
         "Mul",
@@ -64,10 +66,9 @@ export default {
       ],
     },
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-Data2VecAudioForSequenceClassification-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-Data2VecAudioModel-ONNX",
       dtype: "fp32",
-      architectures: ["Data2VecAudioForSequenceClassification"],
+      architectures: ["Data2VecAudioModel"],
       ops: [
         "Add",
         "Cast",
@@ -77,7 +78,6 @@ export default {
         "Div",
         "Erf",
         "Gather",
-        "Gemm",
         "Identity",
         "MatMul",
         "Mul",

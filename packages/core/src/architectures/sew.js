@@ -4,9 +4,10 @@ export default {
   model_type: "sew",
   models: [
     {
-      model_id: "onnx-internal-testing/tiny-random-SEWModel-ONNX",
+      model_id:
+        "onnx-internal-testing/tiny-random-SEWForSequenceClassification-ONNX",
       dtype: "fp32",
-      architectures: ["SEWModel"],
+      architectures: ["SEWForSequenceClassification"],
       ops: [
         "Add",
         "AveragePool",
@@ -18,6 +19,7 @@ export default {
         "Div",
         "Erf",
         "Gather",
+        "Gemm",
         "Identity",
         "InstanceNormalization",
         "MatMul",
@@ -37,10 +39,9 @@ export default {
       ],
     },
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-SEWForSequenceClassification-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-SEWModel-ONNX",
       dtype: "fp32",
-      architectures: ["SEWForSequenceClassification"],
+      architectures: ["SEWModel"],
       ops: [
         "Add",
         "AveragePool",
@@ -52,7 +53,6 @@ export default {
         "Div",
         "Erf",
         "Gather",
-        "Gemm",
         "Identity",
         "InstanceNormalization",
         "MatMul",
