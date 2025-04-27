@@ -53,21 +53,17 @@ A versatile toolkit designed to measure and compare the performance of Transform
      python3 -m pip install -r scripts/requirements.txt
      ```
 
-   - Optionally (to increase rate limits), login via `huggingface-cli`:
+   - Clone model-explorer dataset
 
      ```sh
-     huggingface-cli login
+     npm run pull:model-explorer
      ```
 
-     and enter a valid access token (which can be obtained [here](https://huggingface.co/settings/tokens)).
-
-   - Download and build model operations with:
+   - Build model operations with:
 
      ```sh
      npm run build:architectures
      ```
-
-     NOTE: It may take quite a long time to retrieve all models.
 
 ## Repository Structure
 
