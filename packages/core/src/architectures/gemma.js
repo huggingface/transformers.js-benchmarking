@@ -5,7 +5,7 @@ export default {
   models: [
     {
       model_id: "Xenova/tiny-random-GemmaForCausalLM",
-      dtype: "fp32",
+      dtype: "q4",
       architectures: ["GemmaForCausalLM"],
       ops: [
         "Add",
@@ -21,6 +21,7 @@ export default {
         "Greater",
         "Identity",
         "MatMul",
+        "MatMulNBits",
         "Mul",
         "Neg",
         "Pow",
@@ -80,7 +81,7 @@ export default {
     },
     {
       model_id: "Xenova/tiny-random-GemmaForCausalLM",
-      dtype: "int8",
+      dtype: "quantized",
       architectures: ["GemmaForCausalLM"],
       ops: [
         "Add",
@@ -120,7 +121,7 @@ export default {
     },
     {
       model_id: "Xenova/tiny-random-GemmaForCausalLM",
-      dtype: "q4",
+      dtype: "fp32",
       architectures: ["GemmaForCausalLM"],
       ops: [
         "Add",
@@ -136,7 +137,6 @@ export default {
         "Greater",
         "Identity",
         "MatMul",
-        "MatMulNBits",
         "Mul",
         "Neg",
         "Pow",

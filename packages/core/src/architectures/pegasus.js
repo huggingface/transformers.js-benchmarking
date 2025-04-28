@@ -4,10 +4,9 @@ export default {
   model_type: "pegasus",
   models: [
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-PegasusForConditionalGeneration-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-PegasusForCausalLM-ONNX",
       dtype: "fp32",
-      architectures: ["PegasusForConditionalGeneration"],
+      architectures: ["PegasusForCausalLM"],
       ops: [
         "Add",
         "Cast",
@@ -20,7 +19,6 @@ export default {
         "Expand",
         "Gather",
         "Identity",
-        "If",
         "Less",
         "MatMul",
         "Mul",
@@ -40,9 +38,10 @@ export default {
       ],
     },
     {
-      model_id: "onnx-internal-testing/tiny-random-PegasusForCausalLM-ONNX",
+      model_id:
+        "onnx-internal-testing/tiny-random-PegasusForConditionalGeneration-ONNX",
       dtype: "fp32",
-      architectures: ["PegasusForCausalLM"],
+      architectures: ["PegasusForConditionalGeneration"],
       ops: [
         "Add",
         "Cast",
@@ -55,6 +54,7 @@ export default {
         "Expand",
         "Gather",
         "Identity",
+        "If",
         "Less",
         "MatMul",
         "Mul",

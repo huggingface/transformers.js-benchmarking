@@ -1,0 +1,40 @@
+// NOTE: This file has been auto-generated. Do not edit directly.
+
+export default {
+  model_type: "ben",
+  models: [
+    {
+      model_id: "onnx-community/BEN2-ONNX",
+      dtype: "fp16",
+      architectures: [],
+      ops: [
+        "Add",
+        "AveragePool",
+        "Cast",
+        "Concat",
+        "Conv",
+        "Div",
+        "Erf",
+        "Gather",
+        "Gemm",
+        "InstanceNormalization",
+        "MatMul",
+        "Mul",
+        "Pad",
+        "Pow",
+        "ReduceMean",
+        "Reshape",
+        "Resize",
+        "Sigmoid",
+        "Slice",
+        "Softmax",
+        "Split",
+        "Sqrt",
+        "Squeeze",
+        "Sub",
+        "Transpose",
+        "Unsqueeze",
+      ],
+    },
+  ],
+};

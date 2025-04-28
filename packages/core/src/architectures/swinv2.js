@@ -4,9 +4,10 @@ export default {
   model_type: "swinv2",
   models: [
     {
-      model_id: "onnx-internal-testing/tiny-random-Swinv2Model-ONNX",
+      model_id:
+        "onnx-internal-testing/tiny-random-Swinv2ForImageClassification-ONNX",
       dtype: "fp32",
-      architectures: ["Swinv2Model"],
+      architectures: ["Swinv2ForImageClassification"],
       ops: [
         "Add",
         "Cast",
@@ -20,7 +21,10 @@ export default {
         "Erf",
         "Exp",
         "Expand",
+        "Flatten",
         "Gather",
+        "Gemm",
+        "GlobalAveragePool",
         "Identity",
         "MatMul",
         "Mod",
@@ -46,10 +50,9 @@ export default {
       ],
     },
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-Swinv2ForImageClassification-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-Swinv2Model-ONNX",
       dtype: "fp32",
-      architectures: ["Swinv2ForImageClassification"],
+      architectures: ["Swinv2Model"],
       ops: [
         "Add",
         "Cast",
@@ -63,10 +66,7 @@ export default {
         "Erf",
         "Exp",
         "Expand",
-        "Flatten",
         "Gather",
-        "Gemm",
-        "GlobalAveragePool",
         "Identity",
         "MatMul",
         "Mod",

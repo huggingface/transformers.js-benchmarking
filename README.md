@@ -53,7 +53,13 @@ A versatile toolkit designed to measure and compare the performance of Transform
      python3 -m pip install -r scripts/requirements.txt
      ```
 
-   - Download and build model operations with:
+   - Clone model-explorer dataset
+
+     ```sh
+     npm run pull:model-explorer
+     ```
+
+   - Build model operations with:
 
      ```sh
      npm run build:architectures

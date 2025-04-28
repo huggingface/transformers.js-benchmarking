@@ -6,12 +6,14 @@ import json
 import csv
 import logging
 from requests.exceptions import RequestException
+from huggingface_hub.errors import HfHubHTTPError
 from pathlib import Path
 from typing import Set, Dict, Tuple, List, Any, Callable
 
 from huggingface_hub import HfApi, hf_hub_url, HfFileSystem
 import onnx
 from tqdm import tqdm
+import gc
 
 from parser import stream_parse_model_header
 
@@ -34,10 +36,31 @@ ALLOWED_AUTHORS = [
     "llava-hf",
     "Marqo",
     "Snowflake",
+    "ds4sd",
+    "sentence-transformers",
+    "briaai",
+    "nomic-ai",
+    "Alibaba-NLP",
+    "AdamCodd",
+    "jonathandinu",
+    "Supabase",
+    "WhereIsAI",
+    "llava-hf",
+    "Oblix",
+    "Intel",
+    "teapotai",
+    "ai4privacy",
+    "BritishWerewolf",
+    "OuteAI",
+    "ylacombe",
 ]
-BANNED_REPOS = set()
+BANNED_REPOS = [
+    "briaai/RMBG-2.0",
+    "AdamCodd/distilroberta-nsfw-prompt-stable-diffusion",
+    "AdamCodd/vit-nsfw-stable-diffusion",
+]
 
-CACHE_DIR = Path(__file__).parent / ".cache"
+CACHE_DIR = Path(__file__).parent.parent / "data" / "model-explorer"
 ALLOWED_QUANTIZATIONS = ["fp16", "uint8", "int8", "quantized", "q4", "q4f16", "bnb4"]
 DISALLOWED_FILE_PATTERNS = [
     re.compile(r'decoder(_with_past)?_model(?!_merged)'),
@@ -69,7 +92,7 @@ def get_operators(model: onnx.ModelProto) -> Set[str]:
     traverse_graph(model.graph)
     return operators
 
-def retry_operation(func: Callable, *args, max_retries: int = 5, initial_delay: int = 1, **kwargs) -> Any:
+def retry_operation(func: Callable, *args, max_retries: int = 10, initial_delay: int = 1, **kwargs) -> Any:
     """
     Retry a given operation with exponential backoff.
 
@@ -92,8 +115,9 @@ def retry_operation(func: Callable, *args, max_retries: int = 5, initial_delay: 
             return func(*args, **kwargs)
         except RuntimeError:
             return False
-        except RequestException as e:
-            if (status := e.response) and (status.status_code == 429 or 500 <= status.status_code < 600):
+        except (RequestException, HfHubHTTPError) as e:
+            status = getattr(e, "response", None)
+            if status is not None and (status.status_code == 429 or 500 <= status.status_code < 600):
                 logging.warning(
                     f"Attempt {attempt + 1} failed with status {status.status_code}. Retrying after {delay} seconds..."
                 )
@@ -105,8 +129,8 @@ def retry_operation(func: Callable, *args, max_retries: int = 5, initial_delay: 
 
 def collect_model_ops(
     model_limit: int = None,
-    use_cache: bool = True,
-    limit: int = 500,
+    from_cache: bool = False,
+    limit: int = None,
     include_all_models: bool = False,
 ) -> None:
     """
@@ -115,7 +139,7 @@ def collect_model_ops(
 
     Args:
         model_limit: Maximum number of models to query from the Hub.
-        use_cache: Whether to use the local cache folder for saving/loading models.
+        from_cache: Whether to only load models from the local cache folder.
         limit: Maximum number of unique models to process.
         include_all_models: If True, also includes models from transformers.js library.
     """
@@ -165,21 +189,15 @@ def collect_model_ops(
         model_architectures[repo_id] = cfg.get("architectures", [])
 
     # Limit unique models based on downloads
-    unique_models = dict(
-        sorted(unique_models.items(), key=lambda x: x[1].downloads, reverse=True)[:limit]
-    )
+    models_sorted = sorted(unique_models.items(), key=lambda x: x[1].downloads, reverse=True)
+    if limit is not None:
+        models_sorted = models_sorted[:limit]
+    unique_models = dict(models_sorted)
     logging.info("Processing %d unique models.", len(unique_models))
-
-    processed_repo_list_path = CACHE_DIR / "models.txt"
-    processed_repos = set()
-    if use_cache and processed_repo_list_path.exists():
-        with processed_repo_list_path.open("r") as f:
-            processed_repos = {line.strip() for line in f}
 
     model_type_ops: Dict[Tuple[str, str, str], Set[str]] = {}
     for repo_id, model in tqdm(unique_models.items(), desc="Processing Models"):
-        processed = repo_id in processed_repos
-        if processed:
+        if from_cache:
             model_cache_folder = CACHE_DIR / repo_id
             files = []
             if model_cache_folder.exists():
@@ -203,19 +221,16 @@ def collect_model_ops(
 
             quantization = match.group(2) or "fp32"
             model_proto = None
-            cache_path = None
-            if use_cache:
-                cache_folder = CACHE_DIR / repo_id
-                cache_folder.mkdir(exist_ok=True, parents=True)
-                cache_path = cache_folder / file_name
-                if cache_path.exists():
-                    model_proto = onnx.load(str(cache_path), load_external_data=False)
-
-            if model_proto is None:
+            cache_folder = CACHE_DIR / repo_id
+            cache_folder.mkdir(exist_ok=True, parents=True)
+            cache_path = cache_folder / file_name
+            if cache_path.exists():
+                model_proto = onnx.load(str(cache_path), load_external_data=False)
+            elif not from_cache:
                 logging.info('Downloading model "%s/%s/%s"', repo_id, subfolder, file_name)
                 url = hf_hub_url(repo_id=repo_id, subfolder=subfolder, filename=file_name)
                 model_proto = retry_operation(stream_parse_model_header, url)
-                if use_cache and cache_path and model_proto:
+                if model_proto:
                     onnx.save(model_proto, str(cache_path))
 
             if model_proto:
@@ -225,11 +240,9 @@ def collect_model_ops(
                 if key not in model_type_ops:
                     model_type_ops[key] = set()
                 model_type_ops[key].update(ops_set)
+                del model_proto
+                gc.collect()
 
-        if use_cache and not processed:
-            with processed_repo_list_path.open("a") as f:
-                f.write(repo_id + "\n")
-            processed_repos.add(repo_id)
 
     architecture_ops: Dict[str, List[Tuple[str, str, Set[str]]]] = {}
     for (m_type, model_id, q), ops_set in model_type_ops.items():
@@ -250,7 +263,7 @@ def collect_model_ops(
         js_path = arch_dir / f"{m_type}.js"
         models_data = [
             {"model_id": model_id, "dtype": quantization, "architectures": model_architectures[model_id], "ops": sorted(list(ops))}
-            for model_id, quantization, ops in model_list
+            for model_id, quantization, ops in sorted(model_list, key=lambda x: x[0])
         ]
         template = (
             f"// NOTE: This file has been auto-generated. Do not edit directly.\n\n"
@@ -284,10 +297,10 @@ def main() -> None:
         description="Collect operators used in ONNX models from the Hugging Face Hub."
     )
     parser.add_argument("--model_limit", type=int, default=None, help="Maximum number of models to query from the Hub.")
-    parser.add_argument("--limit", type=int, default=500, help="Maximum number of unique models to process.")
+    parser.add_argument("--limit", type=int, default=None, help="Maximum number of unique models to process.")
     parser.add_argument(
-        "--disable_cache", action="store_true",
-        help="Disable using local cache for loading/saving models."
+        "--from_cache", action="store_true",
+        help="Only use local cache for loading models."
     )
     parser.add_argument(
         "--all_models", action="store_true",
@@ -297,7 +310,7 @@ def main() -> None:
 
     collect_model_ops(
         model_limit=args.model_limit,
-        use_cache=not args.disable_cache,
+        from_cache=args.from_cache,
         limit=args.limit,
         include_all_models=args.all_models,
     )

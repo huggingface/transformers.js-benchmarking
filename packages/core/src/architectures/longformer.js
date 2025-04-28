@@ -4,10 +4,9 @@ export default {
   model_type: "longformer",
   models: [
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-LongformerForTokenClassification-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-LongformerForMaskedLM-ONNX",
       dtype: "fp32",
-      architectures: ["LongformerForTokenClassification"],
+      architectures: ["LongformerForMaskedLM"],
       ops: [
         "Add",
         "Cast",
