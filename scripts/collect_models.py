@@ -56,6 +56,7 @@ ALLOWED_AUTHORS = [
 ]
 BANNED_REPOS = [
     "briaai/RMBG-2.0",
+    "AdamCodd/distilroberta-nsfw-prompt-stable-diffusion",
 ]
 
 CACHE_DIR = Path(__file__).parent.parent / "data" / "model-explorer"
