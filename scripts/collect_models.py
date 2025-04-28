@@ -38,8 +38,25 @@ ALLOWED_AUTHORS = [
     "Snowflake",
     "ds4sd",
     "sentence-transformers",
+    "briaai",
+    "nomic-ai",
+    "Alibaba-NLP",
+    "AdamCodd",
+    "jonathandinu",
+    "Supabase",
+    "WhereIsAI",
+    "llava-hf",
+    "Oblix",
+    "Intel",
+    "teapotai",
+    "ai4privacy",
+    "BritishWerewolf",
+    "OuteAI",
+    "ylacombe",
 ]
-BANNED_REPOS = set()
+BANNED_REPOS = [
+    "briaai/RMBG-2.0",
+]
 
 CACHE_DIR = Path(__file__).parent.parent / "data" / "model-explorer"
 ALLOWED_QUANTIZATIONS = ["fp16", "uint8", "int8", "quantized", "q4", "q4f16", "bnb4"]
