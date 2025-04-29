@@ -199,9 +199,7 @@ def collect_model_ops(
     for repo_id, model in tqdm(unique_models.items(), desc="Processing Models"):
         if from_cache:
             model_cache_folder = CACHE_DIR / repo_id
-            files = []
-            if model_cache_folder.exists():
-                files = [f"{repo_id}/onnx/{f}" for f in os.listdir(model_cache_folder)]
+            files = [f"{repo_id}/onnx/{f}" for f in os.listdir(model_cache_folder)] if model_cache_folder.exists() else []
         else:
             pattern = f"{repo_id}/**/*.onnx"
             result = retry_operation(fs.glob, pattern, detail=True)
