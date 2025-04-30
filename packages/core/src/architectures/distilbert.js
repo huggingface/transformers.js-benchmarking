@@ -324,8 +324,7 @@ export default {
       ],
     },
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-DistilBertForSequenceClassification-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-distilbert-ONNX",
       dtype: "fp32",
       architectures: ["DistilBertForSequenceClassification"],
       ops: [

@@ -356,9 +356,9 @@ export default {
       ],
     },
     {
-      model_id: "onnx-internal-testing/tiny-random-GPT2Model-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-GPT2LMHeadModel-ONNX",
       dtype: "fp32",
-      architectures: ["GPT2Model"],
+      architectures: ["GPT2LMHeadModel"],
       ops: [
         "Add",
         "Cast",

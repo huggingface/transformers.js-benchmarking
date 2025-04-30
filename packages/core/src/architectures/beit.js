@@ -4,6 +4,38 @@ export default {
   model_type: "beit",
   models: [
     {
+      model_id: "Xenova/beit-base-patch16-224",
+      dtype: "fp16",
+      architectures: ["BeitForImageClassification"],
+      ops: [
+        "Add",
+        "Cast",
+        "Concat",
+        "Constant",
+        "ConstantOfShape",
+        "Conv",
+        "Div",
+        "Equal",
+        "Erf",
+        "Expand",
+        "Gather",
+        "Gemm",
+        "MatMul",
+        "Mul",
+        "Pow",
+        "ReduceMean",
+        "Reshape",
+        "Shape",
+        "Slice",
+        "Softmax",
+        "Sqrt",
+        "Sub",
+        "Transpose",
+        "Unsqueeze",
+        "Where",
+      ],
+    },
+    {
       model_id: "Xenova/beit-base-patch16-224-pt22k",
       dtype: "quantized",
       architectures: ["BeitForMaskedImageModeling"],
@@ -68,7 +100,7 @@ export default {
       ],
     },
     {
-      model_id: "Xenova/dit-base",
+      model_id: "Xenova/dit-large",
       dtype: "fp32",
       architectures: ["BeitForMaskedImageModeling"],
       ops: [
@@ -98,7 +130,7 @@ export default {
       ],
     },
     {
-      model_id: "Xenova/dit-base",
+      model_id: "Xenova/dit-large",
       dtype: "fp16",
       architectures: ["BeitForMaskedImageModeling"],
       ops: [

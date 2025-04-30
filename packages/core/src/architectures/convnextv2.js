@@ -4,7 +4,7 @@ export default {
   model_type: "convnextv2",
   models: [
     {
-      model_id: "Xenova/convnextv2-pico-1k-224",
+      model_id: "Xenova/convnextv2-large-22k-384",
       dtype: "quantized",
       architectures: ["ConvNextV2ForImageClassification"],
       ops: [
@@ -28,7 +28,7 @@ export default {
       ],
     },
     {
-      model_id: "Xenova/convnextv2-pico-1k-224",
+      model_id: "Xenova/convnextv2-large-22k-384",
       dtype: "fp32",
       architectures: ["ConvNextV2ForImageClassification"],
       ops: [

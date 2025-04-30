@@ -47,7 +47,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/maskformer-resnet101-ade",
+      model_id: "onnx-community/maskformer-resnet101-cityscapes",
       dtype: "q4",
       architectures: ["MaskFormerForInstanceSegmentation"],
       ops: [
@@ -87,7 +87,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/maskformer-resnet101-ade",
+      model_id: "onnx-community/maskformer-resnet101-cityscapes",
       dtype: "bnb4",
       architectures: ["MaskFormerForInstanceSegmentation"],
       ops: [
@@ -127,7 +127,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/maskformer-resnet101-ade",
+      model_id: "onnx-community/maskformer-resnet101-cityscapes",
       dtype: "quantized",
       architectures: ["MaskFormerForInstanceSegmentation"],
       ops: [
@@ -168,7 +168,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/maskformer-resnet101-ade",
+      model_id: "onnx-community/maskformer-resnet101-cityscapes",
       dtype: "fp32",
       architectures: ["MaskFormerForInstanceSegmentation"],
       ops: [
@@ -207,7 +207,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/maskformer-swin-base-ade",
+      model_id: "onnx-community/maskformer-swin-base-coco",
       dtype: "q4",
       architectures: ["MaskFormerForInstanceSegmentation"],
       ops: [
@@ -253,7 +253,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/maskformer-swin-base-ade",
+      model_id: "onnx-community/maskformer-swin-base-coco",
       dtype: "bnb4",
       architectures: ["MaskFormerForInstanceSegmentation"],
       ops: [
@@ -299,7 +299,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/maskformer-swin-base-ade",
+      model_id: "onnx-community/maskformer-swin-base-coco",
       dtype: "quantized",
       architectures: ["MaskFormerForInstanceSegmentation"],
       ops: [
@@ -346,7 +346,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/maskformer-swin-base-ade",
+      model_id: "onnx-community/maskformer-swin-base-coco",
       dtype: "fp32",
       architectures: ["MaskFormerForInstanceSegmentation"],
       ops: [

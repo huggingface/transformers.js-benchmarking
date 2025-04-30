@@ -4,7 +4,7 @@ export default {
   model_type: "owlv2",
   models: [
     {
-      model_id: "Xenova/owlv2-base-patch16-ensemble",
+      model_id: "Xenova/owlv2-base-patch16",
       dtype: "quantized",
       architectures: ["Owlv2ForObjectDetection"],
       ops: [
@@ -52,7 +52,7 @@ export default {
       ],
     },
     {
-      model_id: "Xenova/owlv2-base-patch16-ensemble",
+      model_id: "Xenova/owlv2-base-patch16",
       dtype: "fp32",
       architectures: ["Owlv2ForObjectDetection"],
       ops: [

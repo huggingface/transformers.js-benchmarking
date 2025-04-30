@@ -171,10 +171,9 @@ export default {
       ],
     },
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-IBertForTokenClassification-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-IBertModel-ONNX",
       dtype: "fp32",
-      architectures: ["IBertForTokenClassification"],
+      architectures: ["IBertModel"],
       ops: [
         "Abs",
         "Add",

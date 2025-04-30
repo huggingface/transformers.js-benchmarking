@@ -47,10 +47,9 @@ export default {
       ],
     },
     {
-      model_id:
-        "onnx-internal-testing/tiny-random-ConvNextForImageClassification-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-ConvNextModel-ONNX",
       dtype: "fp32",
-      architectures: ["ConvNextForImageClassification"],
+      architectures: ["ConvNextModel"],
       ops: [
         "Add",
         "Cast",
@@ -58,7 +57,6 @@ export default {
         "Conv",
         "Div",
         "Erf",
-        "Gemm",
         "Identity",
         "MatMul",
         "Mul",
@@ -70,9 +68,9 @@ export default {
       ],
     },
     {
-      model_id: "onnx-internal-testing/tiny-random-ConvNextModel-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-convnext-ONNX",
       dtype: "fp32",
-      architectures: ["ConvNextModel"],
+      architectures: ["ConvNextForImageClassification"],
       ops: [
         "Add",
         "Cast",
@@ -80,6 +78,7 @@ export default {
         "Conv",
         "Div",
         "Erf",
+        "Gemm",
         "Identity",
         "MatMul",
         "Mul",

@@ -192,7 +192,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/dpt-dinov2-base-nyu",
+      model_id: "onnx-community/dpt-dinov2-small-kitti",
       dtype: "q4",
       architectures: ["DPTForDepthEstimation"],
       ops: [
@@ -225,7 +225,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/dpt-dinov2-base-nyu",
+      model_id: "onnx-community/dpt-dinov2-small-kitti",
       dtype: "bnb4",
       architectures: ["DPTForDepthEstimation"],
       ops: [
@@ -258,7 +258,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/dpt-dinov2-base-nyu",
+      model_id: "onnx-community/dpt-dinov2-small-kitti",
       dtype: "q4f16",
       architectures: ["DPTForDepthEstimation"],
       ops: [
@@ -292,7 +292,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/dpt-dinov2-base-nyu",
+      model_id: "onnx-community/dpt-dinov2-small-kitti",
       dtype: "quantized",
       architectures: ["DPTForDepthEstimation"],
       ops: [
@@ -327,7 +327,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/dpt-dinov2-base-nyu",
+      model_id: "onnx-community/dpt-dinov2-small-kitti",
       dtype: "fp32",
       architectures: ["DPTForDepthEstimation"],
       ops: [
@@ -359,7 +359,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/dpt-dinov2-base-nyu",
+      model_id: "onnx-community/dpt-dinov2-small-kitti",
       dtype: "fp16",
       architectures: ["DPTForDepthEstimation"],
       ops: [

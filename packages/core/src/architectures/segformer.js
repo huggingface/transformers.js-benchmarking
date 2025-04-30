@@ -89,7 +89,7 @@ export default {
       ],
     },
     {
-      model_id: "Xenova/segformer-b0-finetuned-ade-512-512",
+      model_id: "jonathandinu/face-parsing",
       dtype: "quantized",
       architectures: ["SegformerForSemanticSegmentation"],
       ops: [
@@ -121,7 +121,7 @@ export default {
       ],
     },
     {
-      model_id: "Xenova/segformer-b0-finetuned-ade-512-512",
+      model_id: "jonathandinu/face-parsing",
       dtype: "fp32",
       architectures: ["SegformerForSemanticSegmentation"],
       ops: [

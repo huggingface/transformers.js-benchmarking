@@ -4,7 +4,7 @@ export default {
   model_type: "rt_detr",
   models: [
     {
-      model_id: "onnx-community/rtdetr_r50vd",
+      model_id: "onnx-community/rtdetr_r18vd_coco_o365",
       dtype: "q4",
       architectures: ["RTDetrForObjectDetection"],
       ops: [
@@ -44,7 +44,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/rtdetr_r50vd",
+      model_id: "onnx-community/rtdetr_r18vd_coco_o365",
       dtype: "bnb4",
       architectures: ["RTDetrForObjectDetection"],
       ops: [
@@ -84,7 +84,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/rtdetr_r50vd",
+      model_id: "onnx-community/rtdetr_r18vd_coco_o365",
       dtype: "quantized",
       architectures: ["RTDetrForObjectDetection"],
       ops: [
@@ -126,7 +126,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/rtdetr_r50vd",
+      model_id: "onnx-community/rtdetr_r18vd_coco_o365",
       dtype: "fp32",
       architectures: ["RTDetrForObjectDetection"],
       ops: [
@@ -165,7 +165,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/rtdetr_r50vd",
+      model_id: "onnx-community/rtdetr_r18vd_coco_o365",
       dtype: "fp16",
       architectures: ["RTDetrForObjectDetection"],
       ops: [

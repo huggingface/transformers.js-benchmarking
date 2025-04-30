@@ -38,7 +38,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/hiera-huge-224-in1k-hf",
+      model_id: "onnx-community/hiera-base-plus-224-in1k-hf",
       dtype: "q4",
       architectures: ["HieraForImageClassification"],
       ops: [
@@ -69,7 +69,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/hiera-huge-224-in1k-hf",
+      model_id: "onnx-community/hiera-base-plus-224-in1k-hf",
       dtype: "bnb4",
       architectures: ["HieraForImageClassification"],
       ops: [
@@ -100,7 +100,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/hiera-huge-224-in1k-hf",
+      model_id: "onnx-community/hiera-base-plus-224-in1k-hf",
       dtype: "q4f16",
       architectures: ["HieraForImageClassification"],
       ops: [
@@ -132,7 +132,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/hiera-huge-224-in1k-hf",
+      model_id: "onnx-community/hiera-base-plus-224-in1k-hf",
       dtype: "quantized",
       architectures: ["HieraForImageClassification"],
       ops: [
@@ -164,7 +164,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/hiera-huge-224-in1k-hf",
+      model_id: "onnx-community/hiera-base-plus-224-in1k-hf",
       dtype: "fp32",
       architectures: ["HieraForImageClassification"],
       ops: [
@@ -194,7 +194,7 @@ export default {
       ],
     },
     {
-      model_id: "onnx-community/hiera-huge-224-in1k-hf",
+      model_id: "onnx-community/hiera-base-plus-224-in1k-hf",
       dtype: "fp16",
       architectures: ["HieraForImageClassification"],
       ops: [

@@ -105,9 +105,9 @@ export default {
       ],
     },
     {
-      model_id: "onnx-internal-testing/tiny-random-FlaubertModel-ONNX",
+      model_id: "onnx-internal-testing/tiny-random-flaubert-ONNX",
       dtype: "fp32",
-      architectures: ["FlaubertModel"],
+      architectures: [],
       ops: [
         "Add",
         "Cast",

@@ -1,0 +1,50 @@
+// NOTE: This file has been auto-generated. Do not edit directly.
+
+export default {
+  model_type: "SegformerForSemanticSegmentation",
+  models: [
+    {
+      model_id: "briaai/RMBG-1.4",
+      dtype: "quantized",
+      architectures: ["BriaRMBG"],
+      ops: [
+        "Add",
+        "Cast",
+        "Concat",
+        "Constant",
+        "ConvInteger",
+        "DynamicQuantizeLinear",
+        "Gather",
+        "MaxPool",
+        "Mul",
+        "Relu",
+        "Reshape",
+        "Resize",
+        "Shape",
+        "Sigmoid",
+        "Slice",
+        "Unsqueeze",
+      ],
+    },
+    {
+      model_id: "briaai/RMBG-1.4",
+      dtype: "fp32",
+      architectures: ["BriaRMBG"],
+      ops: [
+        "Add",
+        "Cast",
+        "Concat",
+        "Constant",
+        "Conv",
+        "Gather",
+        "MaxPool",
+        "Relu",
+        "Resize",
+        "Shape",
+        "Sigmoid",
+        "Slice",
+        "Unsqueeze",
+      ],
+    },
+  ],
+};
